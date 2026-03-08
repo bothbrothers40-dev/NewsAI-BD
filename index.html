@@ -2,283 +2,1215 @@
 <html lang="bn" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 <title>NewsAI BD — Saham Haque কর্তৃক বিশ্বস্ত AI সংবাদ</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root{
-  --bg:#f0ebe3;--bg2:#e8e1d8;--sf:#fff;--sf2:#f7f4ef;
-  --bd:#d4ccc0;--tx:#1a1612;--tx2:#5a4f44;--tx3:#8a7f74;
-  --ac:#c0392b;--ac2:#e74c3c;--acbg:#fdf0ef;
-  --gd:#d4a017;--gdbg:#fdf8ed;--gn:#27ae60;--bl:#2980b9;--blbg:#eaf4fb;
-  --sh:0 2px 16px rgba(0,0,0,.08);--sh2:0 8px 40px rgba(0,0,0,.13);
-  --r:12px;--r2:20px;--nav:62px;
-  --fb:'Hind Siliguri',sans-serif;--fs:'Noto Serif Bengali',serif;--fu:'Sora',sans-serif;
+  --bg:#f0ebe3;
+  --bg2:#e8e1d8;
+  --sf:#fff;
+  --sf2:#f7f4ef;
+  --bd:#d4ccc0;
+  --tx:#1a1612;
+  --tx2:#5a4f44;
+  --tx3:#8a7f74;
+  --ac:#c0392b;
+  --ac2:#e74c3c;
+  --acbg:#fdf0ef;
+  --gd:#d4a017;
+  --gdbg:#fdf8ed;
+  --gn:#27ae60;
+  --bl:#2980b9;
+  --blbg:#eaf4fb;
+  --sh:0 2px 8px rgba(0,0,0,.08);
+  --sh2:0 4px 20px rgba(0,0,0,.13);
+  --r:10px;
+  --r2:16px;
+  --nav:58px;
+  --fb:'Hind Siliguri',sans-serif;
+  --fs:'Noto Serif Bengali',serif;
+  --fu:'Sora',sans-serif;
 }
+
 [data-theme=dark]{
-  --bg:#0f0d0b;--bg2:#1a1714;--sf:#1e1b18;--sf2:#252119;
-  --bd:#3a342c;--tx:#f0e8dc;--tx2:#b5a898;--tx3:#7a6f64;
-  --ac:#e05a4a;--ac2:#f06a5a;--acbg:#2a1a18;
-  --gd:#e8b840;--gdbg:#221e10;--gn:#2ecc71;--bl:#3498db;--blbg:#0f1e2a;
-  --sh:0 2px 16px rgba(0,0,0,.4);--sh2:0 8px 40px rgba(0,0,0,.5);
+  --bg:#0f0d0b;
+  --bg2:#1a1714;
+  --sf:#1e1b18;
+  --sf2:#252119;
+  --bd:#3a342c;
+  --tx:#f0e8dc;
+  --tx2:#b5a898;
+  --tx3:#7a6f64;
+  --ac:#e05a4a;
+  --ac2:#f06a5a;
+  --acbg:#2a1a18;
+  --gd:#e8b840;
+  --gdbg:#221e10;
+  --gn:#2ecc71;
+  --bl:#3498db;
+  --blbg:#0f1e2a;
+  --sh:0 2px 8px rgba(0,0,0,.4);
+  --sh2:0 4px 20px rgba(0,0,0,.5);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--fb);background:var(--bg);color:var(--tx);min-height:100vh;transition:background .3s,color .3s;overflow-x:hidden}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--ac);border-radius:3px}
 
-/* ─ NAV ─ */
-#topnav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav);background:var(--sf);border-bottom:2px solid var(--ac);box-shadow:var(--sh);display:flex;align-items:center;padding:0 14px;gap:8px}
-.nb{display:flex;align-items:center;gap:8px;cursor:pointer;flex-shrink:0;text-decoration:none}
-.nlogo{width:32px;height:32px;background:var(--ac);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--fu);font-weight:800;font-size:13px;flex-shrink:0}
-.ntitle{font-family:var(--fu);font-weight:800;font-size:16px;color:var(--tx);letter-spacing:-.5px;white-space:nowrap}
-.ntitle span{color:var(--ac)}
-.credit-badge{background:var(--gd);color:#fff;font-size:9px;padding:2px 6px;border-radius:12px;margin-left:8px;font-weight:400}
-.ncats{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none;padding:0 4px;min-width:0}
-.ncats::-webkit-scrollbar{display:none}
-.ncat{padding:5px 11px;border-radius:18px;border:none;background:transparent;color:var(--tx2);font-family:var(--fb);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
-.ncat:hover,.ncat.active{background:var(--ac);color:#fff}
-.nright{display:flex;align-items:center;gap:5px;flex-shrink:0}
-.srch{display:flex;align-items:center;background:var(--bg2);border:1px solid var(--bd);border-radius:20px;padding:0 10px;gap:5px;height:32px}
-.srch input{background:none;border:none;outline:none;font-family:var(--fb);font-size:12px;color:var(--tx);width:120px}
-.srch input::placeholder{color:var(--tx3)}
-.ibt{width:32px;height:32px;border-radius:50%;border:1px solid var(--bd);background:var(--sf2);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--tx2);transition:all .2s;flex-shrink:0}
-.ibt:hover{background:var(--ac);color:#fff;border-color:var(--ac)}
-.admbtn{padding:4px 10px;border-radius:16px;border:1px solid var(--gd);background:var(--gdbg);color:var(--gd);font-family:var(--fu);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0}
-.admbtn:hover{background:var(--gd);color:#fff}
+body{
+  font-family:var(--fb);
+  background:var(--bg);
+  color:var(--tx);
+  min-height:100vh;
+  transition:background .3s,color .3s;
+  overflow-x:hidden;
+  line-height:1.5;
+  font-size:14px;
+}
 
-/* ─ TICKER ─ */
-#ticker{background:var(--ac);color:#fff;height:32px;display:flex;align-items:center;overflow:hidden;margin-top:var(--nav)}
-.tklbl{background:rgba(0,0,0,.3);padding:0 11px;height:100%;display:flex;align-items:center;font-family:var(--fu);font-weight:700;font-size:10px;letter-spacing:1px;white-space:nowrap;flex-shrink:0}
-.tktrack{flex:1;overflow:hidden;height:100%;display:flex;align-items:center}
-.tkinner{display:flex;align-items:center;animation:tks 55s linear infinite;white-space:nowrap}
-.tkinner:hover{animation-play-state:paused}
-.tkinner span{padding:0 28px;font-size:12px;font-weight:500}
-.tkinner span::after{content:'●';margin-left:28px;opacity:.4;font-size:7px}
+#topnav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  height:var(--nav);
+  background:var(--sf);
+  border-bottom:2px solid var(--ac);
+  box-shadow:var(--sh);
+  display:flex;
+  align-items:center;
+  padding:0 12px;
+  gap:6px;
+}
+
+.nb{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  flex-shrink:0;
+}
+
+.nlogo{
+  width:32px;
+  height:32px;
+  background:var(--ac);
+  border-radius:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-family:var(--fu);
+  font-weight:800;
+  font-size:13px;
+  flex-shrink:0;
+}
+
+.ntitle{
+  font-family:var(--fu);
+  font-weight:800;
+  font-size:15px;
+  color:var(--tx);
+  letter-spacing:-.5px;
+  white-space:nowrap;
+}
+.ntitle span{color:var(--ac);}
+.credit-badge{
+  background:var(--gd);
+  color:#fff;
+  font-size:7px;
+  padding:2px 4px;
+  border-radius:8px;
+  margin-left:4px;
+  font-weight:400;
+  white-space:nowrap;
+}
+
+.ncats{
+  display:flex;
+  gap:2px;
+  flex:1;
+  overflow-x:auto;
+  scrollbar-width:none;
+  padding:0 2px;
+  -webkit-overflow-scrolling:touch;
+}
+.ncats::-webkit-scrollbar{display:none;}
+
+.ncat{
+  padding:4px 8px;
+  border-radius:16px;
+  border:none;
+  background:transparent;
+  color:var(--tx2);
+  font-family:var(--fb);
+  font-size:12px;
+  font-weight:500;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:all .2s;
+  flex-shrink:0;
+}
+.ncat:hover,.ncat.active{background:var(--ac);color:#fff;}
+
+.nright{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  flex-shrink:0;
+}
+
+.srch{
+  display:none;
+}
+@media(min-width:480px){
+  .srch{
+    display:flex;
+    align-items:center;
+    background:var(--bg2);
+    border:1px solid var(--bd);
+    border-radius:20px;
+    padding:0 8px;
+    gap:4px;
+    height:30px;
+  }
+  .srch input{
+    background:none;
+    border:none;
+    outline:none;
+    font-family:var(--fb);
+    font-size:11px;
+    color:var(--tx);
+    width:90px;
+  }
+  .srch input::placeholder{color:var(--tx3);}
+}
+
+.ibt{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:1px solid var(--bd);
+  background:var(--sf2);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--tx2);
+  transition:all .2s;
+  flex-shrink:0;
+}
+.ibt:hover{background:var(--ac);color:#fff;border-color:var(--ac);}
+
+.admbtn{
+  padding:4px 8px;
+  border-radius:16px;
+  border:1px solid var(--gd);
+  background:var(--gdbg);
+  color:var(--gd);
+  font-family:var(--fu);
+  font-size:10px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .2s;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.admbtn:hover{background:var(--gd);color:#fff;}
+
+#ticker{
+  background:var(--ac);
+  color:#fff;
+  height:28px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  margin-top:var(--nav);
+  font-size:11px;
+}
+.tklbl{
+  background:rgba(0,0,0,.3);
+  padding:0 10px;
+  height:100%;
+  display:flex;
+  align-items:center;
+  font-family:var(--fu);
+  font-weight:700;
+  font-size:9px;
+  letter-spacing:1px;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.tktrack{flex:1;overflow:hidden;height:100%;display:flex;align-items:center;}
+.tkinner{
+  display:flex;
+  align-items:center;
+  animation:tks 45s linear infinite;
+  white-space:nowrap;
+}
+.tkinner:hover{animation-play-state:paused;}
+.tkinner span{
+  padding:0 20px;
+  font-size:11px;
+  font-weight:500;
+}
+.tkinner span::after{
+  content:'●';
+  margin-left:20px;
+  opacity:.4;
+  font-size:6px;
+}
 @keyframes tks{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ─ LIVE NEWS BAR ─ */
-#live-news-bar{background:var(--bl);color:#fff;height:28px;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--bd)}
-.live-label{background:rgba(255,255,255,.2);padding:0 11px;height:100%;display:flex;align-items:center;font-family:var(--fu);font-weight:700;font-size:10px;letter-spacing:1px;white-space:nowrap;flex-shrink:0}
-.live-label i{animation:pulse 1s infinite;margin-right:5px}
-.live-track{flex:1;overflow:hidden;height:100%;display:flex;align-items:center}
-.live-inner{display:flex;align-items:center;animation:liveTicker 45s linear infinite;white-space:nowrap}
-.live-inner:hover{animation-play-state:paused}
-.live-inner span{padding:0 28px;font-size:11px;font-weight:400}
-.live-inner span i{color:var(--gd);margin-right:5px}
+#live-news-bar{
+  background:var(--bl);
+  color:#fff;
+  height:26px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border-bottom:1px solid var(--bd);
+}
+.live-label{
+  background:rgba(255,255,255,.2);
+  padding:0 8px;
+  height:100%;
+  display:flex;
+  align-items:center;
+  font-family:var(--fu);
+  font-weight:700;
+  font-size:9px;
+  letter-spacing:1px;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.live-label i{animation:pulse 1s infinite;margin-right:4px;font-size:6px;}
+.live-track{flex:1;overflow:hidden;height:100%;display:flex;align-items:center;}
+.live-inner{
+  display:flex;
+  align-items:center;
+  animation:liveTicker 35s linear infinite;
+  white-space:nowrap;
+}
+.live-inner:hover{animation-play-state:paused;}
+.live-inner span{
+  padding:0 20px;
+  font-size:10px;
+  font-weight:400;
+}
+.live-inner span i{color:var(--gd);margin-right:5px;}
 @keyframes liveTicker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
 
-/* ─ LAYOUT ─ */
-#wrap{max-width:1280px;margin:0 auto;padding:16px 14px;display:grid;grid-template-columns:1fr 290px;gap:16px}
-@media(max-width:960px){#wrap{grid-template-columns:1fr}#sidebar{display:none}}
+#wrap{
+  max-width:100%;
+  margin:0 auto;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
 
-/* ─ ADS SYSTEM ─ */
-.adbox{background:var(--gdbg);border:2px dashed var(--gd);border-radius:var(--r);padding:13px;text-align:center;margin-bottom:13px;position:relative;cursor:pointer;transition:opacity .2s;overflow:hidden}
-.adbox:hover{opacity:.85}
-.adbox img{width:100%;height:auto;max-height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px}
-.adinn{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--gd);font-family:var(--fu);font-size:12px;font-weight:600;flex-wrap:wrap}
-.adlbl{position:absolute;top:3px;right:7px;font-size:9px;color:var(--tx3);font-family:var(--fu);background:var(--sf);padding:2px 6px;border-radius:10px;z-index:2}
-.ad-counter{position:absolute;bottom:3px;right:7px;font-size:8px;color:var(--tx3);font-family:var(--fu);background:var(--sf);padding:2px 6px;border-radius:10px}
-.ad-close{position:absolute;top:3px;left:7px;font-size:9px;color:var(--tx3);cursor:pointer;background:var(--sf);width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:3}
-.ad-close:hover{background:var(--ac);color:#fff}
+#content{width:100%;}
+#sidebar{display:none;}
 
-/* ─ FEATURED ─ */
-#feat{margin-bottom:20px}
-.fg{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:1fr 1fr;gap:11px}
-@media(max-width:580px){.fg{grid-template-columns:1fr;grid-template-rows:auto}}
-.fm{grid-row:1/3;position:relative;border-radius:var(--r2);overflow:hidden;cursor:pointer;box-shadow:var(--sh2)}
-.fmbg{width:100%;min-height:270px;display:block;transition:transform .4s;background-size:cover!important;background-position:center!important}
-.fm:hover .fmbg{transform:scale(1.03)}
-.fmov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.05) 55%,transparent 100%);padding:16px;display:flex;flex-direction:column;justify-content:flex-end}
-.fmcat{background:var(--ac);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;width:fit-content;margin-bottom:6px;font-family:var(--fu)}
-.fmtitle{color:#fff;font-family:var(--fs);font-size:17px;font-weight:700;line-height:1.44;margin-bottom:6px}
-.fmmeta{color:rgba(255,255,255,.7);font-size:11px;display:flex;gap:9px;flex-wrap:wrap}
-.fsc{background:var(--sf);border-radius:var(--r);overflow:hidden;cursor:pointer;box-shadow:var(--sh);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
-.fsc:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
-.fsi{width:100%;height:105px;display:block;background-size:cover!important;background-position:center!important}
-.fsb{padding:9px 10px;flex:1}
-.fscat{font-size:9px;color:var(--ac);font-weight:700;font-family:var(--fu);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-.fstitle{font-family:var(--fs);font-size:12px;font-weight:600;line-height:1.4;color:var(--tx)}
+@media(min-width:768px){
+  #wrap{
+    max-width:1280px;
+    padding:16px;
+    display:grid;
+    grid-template-columns:1fr 280px;
+    gap:16px;
+  }
+  #sidebar{display:block;}
+}
 
-/* ─ SECTION HEADER ─ */
-.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;flex-wrap:wrap;gap:5px}
-.shtitle{font-family:var(--fu);font-weight:700;font-size:14px;color:var(--tx);display:flex;align-items:center;gap:6px}
-.shtitle::before{content:'';width:3px;height:16px;background:var(--ac);border-radius:2px;display:block}
-.seeall{color:var(--ac);font-size:12px;font-family:var(--fu);cursor:pointer;text-decoration:none;font-weight:600}
-.livebadge{background:var(--ac);color:#fff;font-size:9px;font-family:var(--fu);font-weight:700;padding:2px 7px;border-radius:9px;animation:bl 2s infinite;display:inline-flex;align-items:center;gap:3px}
-.livebadge::before{content:'';width:5px;height:5px;background:#fff;border-radius:50%}
+.adbox{
+  background:var(--gdbg);
+  border:2px dashed var(--gd);
+  border-radius:var(--r);
+  padding:12px;
+  text-align:center;
+  margin-bottom:12px;
+  position:relative;
+  cursor:pointer;
+  transition:opacity .2s;
+  overflow:hidden;
+}
+.adbox img{
+  width:100%;
+  height:auto;
+  max-height:100px;
+  object-fit:cover;
+  border-radius:6px;
+  margin-bottom:6px;
+}
+.adinn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  color:var(--gd);
+  font-family:var(--fu);
+  font-size:11px;
+  font-weight:600;
+  flex-wrap:wrap;
+}
+.adlbl{
+  position:absolute;
+  top:3px;
+  right:5px;
+  font-size:8px;
+  color:var(--tx3);
+  background:var(--sf);
+  padding:2px 5px;
+  border-radius:8px;
+  z-index:2;
+}
+.ad-close{
+  position:absolute;
+  top:3px;
+  left:5px;
+  font-size:8px;
+  color:var(--tx3);
+  cursor:pointer;
+  background:var(--sf);
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:3;
+}
+.ad-close:hover{background:var(--ac);color:#fff;}
+
+.ngrid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-bottom:16px;
+}
+@media(min-width:480px){
+  .ngrid{grid-template-columns:repeat(2,1fr);}
+}
+
+.ncard{
+  background:var(--sf);
+  border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:var(--sh);
+  transition:transform .2s,box-shadow .2s;
+  cursor:pointer;
+}
+.ncard:hover{transform:translateY(-2px);box-shadow:var(--sh2);}
+
+.ncimg{
+  width:100%;
+  height:160px;
+  display:block;
+  background-size:cover!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  position:relative;
+  overflow:hidden;
+}
+.ncimg::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,transparent 60%,rgba(0,0,0,.3));
+  pointer-events:none;
+}
+.source-badge-img{
+  position:absolute;
+  top:6px;
+  left:6px;
+  background:rgba(0,0,0,.6);
+  color:#fff;
+  font-size:8px;
+  padding:2px 5px;
+  border-radius:10px;
+  z-index:2;
+  max-width:120px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.translate-badge-img{
+  position:absolute;
+  bottom:6px;
+  right:6px;
+  background:var(--gd);
+  color:#fff;
+  font-size:7px;
+  padding:2px 5px;
+  border-radius:8px;
+  z-index:2;
+}
+.bangla-badge-img{
+  position:absolute;
+  bottom:6px;
+  left:6px;
+  background:var(--gn);
+  color:#fff;
+  font-size:7px;
+  padding:2px 5px;
+  border-radius:8px;
+  z-index:2;
+}
+
+.ncbody{padding:10px;}
+.nccat{
+  font-size:8px;
+  color:var(--ac);
+  font-weight:700;
+  font-family:var(--fu);
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  margin-bottom:3px;
+}
+.nctitle{
+  font-family:var(--fs);
+  font-size:14px;
+  font-weight:600;
+  line-height:1.4;
+  color:var(--tx);
+  margin-bottom:5px;
+  display:-webkit-box;
+  -line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.ncsum{
+  font-size:11px;
+  color:var(--tx2);
+  line-height:1.5;
+  margin-bottom:8px;
+  display:-webkit-box;
+  -line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.ncfoot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:4px;
+  flex-wrap:wrap;
+}
+.ncmeta{
+  font-size:9px;
+  color:var(--tx3);
+  font-family:var(--fu);
+}
+.ca{display:flex;gap:4px;flex-wrap:wrap;}
+.bsm{
+  padding:4px 8px;
+  border-radius:14px;
+  border:none;
+  font-family:var(--fb);
+  font-size:10px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .2s;
+  display:inline-flex;
+  align-items:center;
+  gap:2px;
+  white-space:nowrap;
+}
+.bex{background:var(--acbg);color:var(--ac);border:1px solid var(--ac);}
+.bex:hover{background:var(--ac);color:#fff;}
+
+.fg{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin-bottom:16px;
+}
+@media(min-width:480px){
+  .fg{
+    grid-template-columns:1.6fr 1fr;
+    grid-template-rows:1fr 1fr;
+  }
+}
+
+.fm{
+  grid-row:auto;
+  position:relative;
+  border-radius:var(--r2);
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:var(--sh2);
+  height:200px;
+}
+@media(min-width:480px){
+  .fm{grid-row:1/3;height:auto;}
+}
+
+.fmbg{
+  width:100%;
+  height:100%;
+  display:block;
+  transition:transform .4s;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.fm:hover .fmbg{transform:scale(1.03);}
+
+.fmov{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.05) 55%,transparent 100%);
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.fmcat{
+  background:var(--ac);
+  color:#fff;
+  font-size:9px;
+  font-weight:700;
+  padding:2px 6px;
+  border-radius:8px;
+  width:fit-content;
+  margin-bottom:4px;
+  font-family:var(--fu);
+}
+.fmtitle{
+  color:#fff;
+  font-family:var(--fs);
+  font-size:15px;
+  font-weight:700;
+  line-height:1.4;
+  margin-bottom:4px;
+  display:-webkit-box;
+  line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.fmmeta{
+  color:rgba(255,255,255,.7);
+  font-size:10px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.fsc{
+  background:var(--sf);
+  border-radius:var(--r);
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:var(--sh);
+  transition:transform .2s,box-shadow .2s;
+  display:flex;
+  height:90px;
+}
+@media(min-width:480px){
+  .fsc{height:auto;display:block;}
+}
+
+.fsi{
+  width:90px;
+  height:90px;
+  flex-shrink:0;
+  background-size:cover!important;
+  background-position:center!important;
+}
+@media(min-width:480px){
+  .fsi{width:100%;height:105px;}
+}
+
+.fsb{
+  padding:8px;
+  flex:1;
+  min-width:0;
+}
+.fscat{
+  font-size:8px;
+  color:var(--ac);
+  font-weight:700;
+  font-family:var(--fu);
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  margin-bottom:2px;
+}
+.fstitle{
+  font-family:var(--fs);
+  font-size:11px;
+  font-weight:600;
+  line-height:1.4;
+  color:var(--tx);
+  display:-webkit-box;
+  line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.sh{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+  flex-wrap:wrap;
+  gap:4px;
+}
+.shtitle{
+  font-family:var(--fu);
+  font-weight:700;
+  font-size:14px;
+  color:var(--tx);
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+.shtitle::before{
+  content:'';
+  width:3px;
+  height:14px;
+  background:var(--ac);
+  border-radius:2px;
+  display:block;
+}
+.seeall{
+  color:var(--ac);
+  font-size:11px;
+  font-family:var(--fu);
+  cursor:pointer;
+  text-decoration:none;
+  font-weight:600;
+}
+.livebadge{
+  background:var(--ac);
+  color:#fff;
+  font-size:8px;
+  font-family:var(--fu);
+  font-weight:700;
+  padding:2px 5px;
+  border-radius:8px;
+  animation:bl 2s infinite;
+  display:inline-flex;
+  align-items:center;
+  gap:2px;
+}
 @keyframes bl{0%,100%{opacity:1}50%{opacity:.3}}
-.translate-badge{background:var(--gd);color:#fff;font-size:8px;padding:2px 6px;border-radius:10px;margin-left:5px}
-.bangla-badge{background:var(--gn);color:#fff;font-size:8px;padding:2px 6px;border-radius:10px;margin-left:5px}
+.translate-badge{
+  background:var(--gd);
+  color:#fff;
+  font-size:7px;
+  padding:2px 4px;
+  border-radius:6px;
+  margin-left:4px;
+}
+.bangla-badge{
+  background:var(--gn);
+  color:#fff;
+  font-size:7px;
+  padding:2px 4px;
+  border-radius:6px;
+  margin-left:4px;
+}
 
-/* ─ NEWS GRID ─ */
-.ngrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
-@media(max-width:520px){.ngrid{grid-template-columns:1fr}}
-.ncard{background:var(--sf);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);transition:transform .2s,box-shadow .2s;cursor:pointer;display:flex;flex-direction:column}
-.ncard:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
-.ncimg{width:100%;height:180px;display:block;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;position:relative;overflow:hidden;transition:all 0.3s ease}
-.ncimg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(0,0,0,.3));pointer-events:none}
-.source-badge-img{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.6);color:#fff;font-size:8px;padding:2px 6px;border-radius:12px;z-index:2}
-.image-badge{position:absolute;top:8px;right:8px;background:var(--ac);color:#fff;font-size:8px;padding:2px 6px;border-radius:12px;z-index:2;opacity:0.9}
-.translate-badge-img{position:absolute;bottom:8px;right:8px;background:var(--gd);color:#fff;font-size:7px;padding:2px 6px;border-radius:10px;z-index:2}
-.ncbody{padding:10px;flex:1;display:flex;flex-direction:column}
-.nccat{font-size:9px;color:var(--ac);font-weight:700;font-family:var(--fu);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
-.nctitle{font-family:var(--fs);font-size:13px;font-weight:600;line-height:1.5;color:var(--tx);margin-bottom:5px;flex:1}
-.ncsum{font-size:11px;color:var(--tx2);line-height:1.65;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.ncfoot{display:flex;align-items:center;justify-content:space-between;gap:4px;flex-wrap:wrap}
-.ncmeta{font-size:10px;color:var(--tx3);font-family:var(--fu)}
-.ca{display:flex;gap:3px;flex-wrap:wrap}
-.bsm{padding:4px 7px;border-radius:12px;border:none;font-family:var(--fb);font-size:10px;font-weight:600;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:2px;white-space:nowrap}
-.bex{background:var(--acbg);color:var(--ac);border:1px solid var(--ac)}
-.bex:hover{background:var(--ac);color:#fff}
-.ai-badge{background:linear-gradient(135deg,var(--ac),#8e44ad);color:#fff;font-size:8px;padding:1px 5px;border-radius:8px;font-family:var(--fu);font-weight:700;display:inline-block;margin-left:3px;vertical-align:middle}
-
-/* ─ EMPTY / LOADING ─ */
-.empty{text-align:center;padding:30px;color:var(--tx3);grid-column:1/-1}
-.empty p{font-size:14px;margin-top:8px}
-.sk{background:var(--sf);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
-.skimg{height:145px}.skbody{padding:10px;display:flex;flex-direction:column;gap:5px}
-.skln{height:10px;border-radius:3px}
-.w6{width:60%}.w8{width:80%}.w4{width:40%}
-.ska{background:linear-gradient(90deg,var(--bg2) 25%,var(--bd) 50%,var(--bg2) 75%);background-size:200% 100%;animation:shim 1.5s infinite}
-@keyframes shim{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
-/* ─ AI STATUS BAR ─ */
-#ai-status{background:linear-gradient(135deg,var(--acbg),var(--blbg));border:1px solid var(--bd);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;font-size:12px;font-family:var(--fu)}
-.ai-status-dot{width:8px;height:8px;border-radius:50%;background:var(--gn);animation:bl 2s infinite;flex-shrink:0}
-.ai-status-dot.loading{background:var(--gd);animation:spin 1s linear infinite}
-.ai-status-dot.error{background:var(--ac);animation:none}
+#ai-status{
+  background:linear-gradient(135deg,var(--acbg),var(--blbg));
+  border:1px solid var(--bd);
+  border-radius:var(--r);
+  padding:10px;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  font-family:var(--fu);
+  flex-wrap:wrap;
+}
+.ai-status-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--gn);
+  animation:bl 2s infinite;
+  flex-shrink:0;
+}
+.ai-status-dot.loading{background:var(--gd);animation:spin 1s linear infinite;}
+.ai-status-dot.error{background:var(--ac);animation:none;}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-#ai-status-text{flex:1;color:var(--tx2)}
-.ai-fetch-btn{padding:4px 10px;border-radius:12px;border:none;background:var(--ac);color:#fff;font-family:var(--fu);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;flex-shrink:0}
-.ai-fetch-btn:hover{background:var(--ac2)}
-.ai-fetch-btn:disabled{opacity:.5;cursor:not-allowed}
+#ai-status-text{flex:1;color:var(--tx2);}
+.ai-fetch-btn{
+  padding:4px 8px;
+  border-radius:16px;
+  border:none;
+  background:var(--ac);
+  color:#fff;
+  font-family:var(--fu);
+  font-size:10px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .2s;
+  flex-shrink:0;
+}
+.ai-fetch-btn:hover{background:var(--ac2);}
+.ai-fetch-btn:disabled{opacity:.5;cursor:not-allowed;}
 
-/* ─ MODALS ─ */
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(5px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:12px;opacity:0;pointer-events:none;transition:opacity .3s}
-.ov.open{opacity:1;pointer-events:all}
-.md{background:var(--sf);border-radius:var(--r2);width:100%;max-width:750px;max-height:90vh;overflow-y:auto;box-shadow:var(--sh2);transform:translateY(16px);transition:transform .3s}
-.ov.open .md{transform:translateY(0)}
-.mdhd{padding:15px 15px 10px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--sf);z-index:1;flex-wrap:wrap}
-.mdhd h3{font-family:var(--fu);font-weight:700;font-size:15px;color:var(--tx);display:flex;align-items:center;gap:6px}
-.mdhd h3 .credit-badge-modal{background:var(--gd);color:#fff;font-size:9px;padding:2px 6px;border-radius:12px;margin-left:6px}
-.mdx{width:27px;height:27px;border-radius:50%;border:1px solid var(--bd);background:none;cursor:pointer;color:var(--tx2);font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1}
-.mdx:hover{background:var(--ac);color:#fff;border-color:var(--ac)}
-.mdbody{padding:15px}
-.news-full{font-family:var(--fs);font-size:15px;line-height:1.9;color:var(--tx);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--bd)}
-.news-full img{width:100%;max-height:300px;object-fit:cover;border-radius:12px;margin-bottom:15px}
-.news-full p{margin-bottom:15px}
-.news-full h2{font-size:20px;margin-bottom:15px;color:var(--ac)}
-.news-full .meta-badges{margin-bottom:15px;display:flex;flex-wrap:wrap;gap:8px}
-.source-badge{background:var(--bl);color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;display:inline-block}
-.api-badge-modal{background:var(--ac);color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;display:inline-block}
-.image-source-modal{background:var(--gd);color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;display:inline-block}
-.translate-modal{background:linear-gradient(135deg,var(--gn),var(--bl));color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;display:inline-block}
-.fact-box{background:var(--gn)15;padding:15px;border-radius:10px;margin:15px 0;border-left:4px solid var(--gn)}
-.fact-box strong{color:var(--gn)}
-.airesp{background:var(--sf2);border-radius:var(--r);padding:15px;font-size:14px;line-height:1.8;color:var(--tx);border-left:4px solid var(--ac);white-space:pre-wrap;min-height:100px;margin-bottom:20px}
-.dots{display:inline-flex;gap:4px;align-items:center}
-.dots span{width:7px;height:7px;background:var(--ac);border-radius:50%;animation:dt .9s ease-in-out infinite}
+.ov{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(5px);
+  z-index:2000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s;
+}
+.ov.open{opacity:1;pointer-events:all;}
+
+.md{
+  background:var(--sf);
+  border-radius:var(--r2);
+  width:100%;
+  max-width:500px;
+  max-height:85vh;
+  overflow-y:auto;
+  box-shadow:var(--sh2);
+  transform:translateY(16px);
+  transition:transform .3s;
+}
+.ov.open .md{transform:translateY(0);}
+
+.mdhd{
+  padding:12px;
+  border-bottom:1px solid var(--bd);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  background:var(--sf);
+  z-index:1;
+}
+.mdhd h3{
+  font-family:var(--fu);
+  font-weight:700;
+  font-size:13px;
+  color:var(--tx);
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+.credit-badge-modal{
+  background:var(--gd);
+  color:#fff;
+  font-size:7px;
+  padding:2px 4px;
+  border-radius:6px;
+}
+.mdx{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  border:1px solid var(--bd);
+  background:none;
+  cursor:pointer;
+  color:var(--tx2);
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all .2s;
+}
+.mdx:hover{background:var(--ac);color:#fff;border-color:var(--ac);}
+
+.mdbody{padding:12px;}
+.news-full{
+  font-family:var(--fs);
+  font-size:13px;
+  line-height:1.7;
+  color:var(--tx);
+  margin-bottom:15px;
+  padding-bottom:15px;
+  border-bottom:1px solid var(--bd);
+}
+.news-full img{
+  width:100%;
+  max-height:200px;
+  object-fit:cover;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+.news-full p{margin-bottom:10px;}
+.news-full h2{font-size:16px;margin-bottom:10px;color:var(--ac);}
+.news-full .original-title{
+  font-size:11px;
+  color:var(--tx3);
+  font-style:italic;
+  margin-top:5px;
+  padding-top:5px;
+  border-top:1px dashed var(--bd);
+}
+
+.meta-badges{
+  margin-bottom:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+.source-badge{
+  background:var(--bl);
+  color:#fff;
+  padding:3px 8px;
+  border-radius:16px;
+  font-size:9px;
+  display:inline-block;
+}
+.translate-modal{
+  background:linear-gradient(135deg,var(--gn),var(--bl));
+  color:#fff;
+  padding:3px 8px;
+  border-radius:16px;
+  font-size:9px;
+  display:inline-block;
+}
+.fact-box{
+  background:var(--gn)15;
+  padding:10px;
+  border-radius:8px;
+  margin:10px 0;
+  border-left:3px solid var(--gn);
+  font-size:11px;
+}
+.airesp{
+  background:var(--sf2);
+  border-radius:var(--r);
+  padding:10px;
+  font-size:12px;
+  line-height:1.6;
+  color:var(--tx);
+  border-left:3px solid var(--ac);
+  white-space:pre-wrap;
+  min-height:80px;
+}
+.dots{display:inline-flex;gap:3px;}
+.dots span{
+  width:6px;
+  height:6px;
+  background:var(--ac);
+  border-radius:50%;
+  animation:dt .9s infinite;
+}
 .dots span:nth-child(2){animation-delay:.15s}
 .dots span:nth-child(3){animation-delay:.3s}
 @keyframes dt{0%,80%,100%{transform:scale(.5);opacity:.3}40%{transform:scale(1);opacity:1}}
 
-/* ─ MODAL CHAT ─ */
-.modal-chat{background:var(--sf2);border-radius:var(--r);padding:15px;margin-top:15px;border:1px solid var(--bd)}
-.modal-chat h4{font-family:var(--fu);font-size:13px;margin-bottom:12px;color:var(--ac);display:flex;align-items:center;gap:5px}
-.modal-chat-msgs{max-height:200px;overflow-y:auto;padding:10px;background:var(--sf);border-radius:10px;margin-bottom:12px;min-height:80px}
-.modal-chat-msgs .msg{font-size:12px;padding:8px 12px;margin-bottom:6px;border-radius:12px;max-width:90%;word-break:break-word}
-.modal-chat-msgs .user-msg{background:var(--acbg);color:var(--ac);margin-left:auto;text-align:right}
-.modal-chat-msgs .ai-msg{background:var(--blbg);color:var(--bl)}
-.modal-chat-input{display:flex;gap:8px}
-.modal-chat-input input{flex:1;padding:8px 12px;border:1px solid var(--bd);border-radius:20px;background:var(--sf);font-size:12px;outline:none}
-.modal-chat-input input:focus{border-color:var(--ac)}
-.modal-chat-input button{padding:8px 18px;background:var(--ac);color:#fff;border:none;border-radius:20px;font-size:12px;cursor:pointer;font-weight:600}
-.modal-chat-input button:hover{background:var(--ac2)}
-.modal-chat-input button:disabled{opacity:.5;cursor:not-allowed}
+#chatbub{
+  position:fixed;
+  bottom:12px;
+  right:12px;
+  z-index:900;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:6px;
+}
+.chatopenbtn{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:var(--ac);
+  border:none;
+  cursor:pointer;
+  box-shadow:0 4px 15px rgba(192,57,43,.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .2s;
+}
+.chatopenbtn:hover{transform:scale(1.08);}
+.chatopenbtn svg{width:22px;height:22px;fill:#fff;}
+#chatpanel{
+  width:280px;
+  height:400px;
+  background:var(--sf);
+  border-radius:16px;
+  box-shadow:var(--sh2);
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid var(--bd);
+  display:none;
+}
+.chhd{
+  background:var(--ac);
+  padding:10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-shrink:0;
+}
+.chav{
+  width:32px;
+  height:32px;
+  background:rgba(255,255,255,.2);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+}
+.chhdi h4{
+  color:#fff;
+  font-family:var(--fu);
+  font-weight:700;
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+.chhdi h4 span{background:rgba(255,255,255,.2);font-size:7px;padding:2px 5px;border-radius:8px;}
+.chhdi p{color:rgba(255,255,255,.8);font-size:9px;}
+.chx{
+  margin-left:auto;
+  background:none;
+  border:none;
+  color:rgba(255,255,255,.9);
+  font-size:14px;
+  cursor:pointer;
+  width:26px;
+  height:26px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  transition:background .2s;
+}
+.chx:hover{background:rgba(255,255,255,.2);}
+#chatmsgs{
+  flex:1;
+  overflow-y:auto;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.msgu{
+  align-self:flex-end;
+  background:var(--ac);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:14px 14px 3px 14px;
+  font-size:11px;
+  max-width:85%;
+  word-break:break-word;
+}
+.msga{
+  align-self:flex-start;
+  background:var(--sf2);
+  color:var(--tx);
+  padding:6px 10px;
+  border-radius:14px 14px 14px 3px;
+  font-size:11px;
+  border:1px solid var(--bd);
+  max-width:85%;
+  word-break:break-word;
+}
+.ailbl{
+  font-size:8px;
+  color:var(--ac);
+  font-weight:700;
+  margin-bottom:2px;
+}
+.chinrow{
+  padding:8px;
+  border-top:1px solid var(--bd);
+  display:flex;
+  gap:5px;
+  background:var(--sf);
+}
+#chatin{
+  flex:1;
+  padding:6px 10px;
+  border-radius:16px;
+  border:1px solid var(--bd);
+  background:var(--sf2);
+  font-size:11px;
+  outline:none;
+}
+#chatin:focus{border-color:var(--ac);}
+.chsend{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:var(--ac);
+  border:none;
+  cursor:pointer;
+  color:#fff;
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .15s;
+}
+.chsend:hover{transform:scale(1.05);}
+.chsend:disabled{opacity:.5;cursor:not-allowed;}
 
-/* ─ MAIN CHAT ─ */
-#chatbub{position:fixed;bottom:16px;right:16px;z-index:900;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
-.chatopenbtn{width:54px;height:54px;border-radius:50%;background:var(--ac);border:none;cursor:pointer;box-shadow:0 4px 20px rgba(192,57,43,.5);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s}
-.chatopenbtn:hover{transform:scale(1.08);box-shadow:0 6px 26px rgba(192,57,43,.65)}
-.chatopenbtn svg{width:24px;height:24px;fill:#fff}
-#chatpanel{width:320px;height:480px;background:var(--sf);border-radius:var(--r2);box-shadow:var(--sh2);flex-direction:column;overflow:hidden;border:1px solid var(--bd);display:none}
-#chatpanel.open{display:flex}
-.chhd{background:var(--ac);padding:11px 13px;display:flex;align-items:center;gap:8px;flex-shrink:0}
-.chav{width:34px;height:34px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.chhdi h4{color:#fff;font-family:var(--fu);font-weight:700;font-size:13px;display:flex;align-items:center;gap:5px}
-.chhdi h4 span{background:rgba(255,255,255,.2);font-size:8px;padding:2px 5px;border-radius:8px}
-.chhdi p{color:rgba(255,255,255,.8);font-size:10px;margin-top:1px}
-.chx{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.9);font-size:16px;cursor:pointer;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .2s;flex-shrink:0;line-height:1}
-.chx:hover{background:rgba(255,255,255,.2)}
-#chatmsgs{flex:1;overflow-y:auto;padding:11px;display:flex;flex-direction:column;gap:8px}
-.msgu{align-self:flex-end;background:var(--ac);color:#fff;padding:7px 11px;border-radius:14px 14px 3px 14px;font-size:12px;line-height:1.5;max-width:85%;word-break:break-word}
-.msga{align-self:flex-start;background:var(--sf2);color:var(--tx);padding:7px 11px;border-radius:14px 14px 14px 3px;font-size:12px;line-height:1.65;border:1px solid var(--bd);max-width:85%;word-break:break-word}
-.ailbl{font-size:9px;color:var(--ac);font-weight:700;font-family:var(--fu);margin-bottom:3px;display:flex;align-items:center;gap:2px}
-.chinrow{padding:8px 11px;border-top:1px solid var(--bd);display:flex;gap:5px;flex-shrink:0;background:var(--sf)}
-#chatin{flex:1;padding:7px 11px;border-radius:16px;border:1px solid var(--bd);background:var(--sf2);font-family:var(--fb);font-size:12px;color:var(--tx);outline:none;transition:border-color .2s}
-#chatin:focus{border-color:var(--ac)}
-.chsend{width:34px;height:34px;border-radius:50%;background:var(--ac);border:none;cursor:pointer;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center;transition:transform .15s,opacity .2s;flex-shrink:0}
-.chsend:hover{transform:scale(1.05)}
-.chsend:disabled{opacity:.45;cursor:not-allowed}
+footer{
+  background:var(--sf);
+  border-top:2px solid var(--ac);
+  padding:16px 12px;
+  margin-top:24px;
+}
+.figrid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:15px;
+}
+@media(min-width:480px){
+  .figrid{grid-template-columns:repeat(2,1fr);}
+}
+@media(min-width:768px){
+  .figrid{grid-template-columns:2fr 1fr 1fr 1fr;}
+}
+.fbrand h2{
+  font-family:var(--fu);
+  font-weight:800;
+  font-size:16px;
+  color:var(--tx);
+  margin-bottom:5px;
+}
+.fbrand h2 span{color:var(--ac);}
+.footer-credit{
+  background:var(--gd);
+  color:#fff;
+  font-size:8px;
+  padding:2px 5px;
+  border-radius:10px;
+  margin-left:5px;
+}
+.fbrand p{font-size:11px;color:var(--tx2);line-height:1.5;}
+.fcol h4{
+  font-family:var(--fu);
+  font-weight:700;
+  font-size:11px;
+  color:var(--tx);
+  margin-bottom:6px;
+}
+.flinks{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.flinks li a{
+  font-size:11px;
+  color:var(--tx2);
+  text-decoration:none;
+  transition:color .2s;
+}
+.flinks li a:hover{color:var(--ac);}
+.fbot{
+  margin-top:12px;
+  padding-top:10px;
+  border-top:1px solid var(--bd);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.fcopy{font-size:10px;color:var(--tx3);}
+.fcopy strong{color:var(--ac);}
+.fbadges{display:flex;gap:4px;flex-wrap:wrap;}
+.bdg{
+  padding:2px 5px;
+  border-radius:6px;
+  font-size:8px;
+  font-weight:600;
+}
+.bdgg{background:#e8f8f0;color:var(--gn);}
+.bdgb{background:var(--blbg);color:var(--bl);}
 
-/* ─ SIDEBAR ─ */
-#sidebar{display:flex;flex-direction:column;gap:11px}
-.sw{background:var(--sf);border-radius:var(--r);padding:12px;box-shadow:var(--sh)}
-.wt{font-family:var(--fu);font-weight:700;font-size:12px;color:var(--tx);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--ac)}
-.tri{display:flex;gap:6px;padding:5px 0;border-bottom:1px solid var(--bd);cursor:pointer;transition:color .15s}
-.tri:last-child{border-bottom:none}
-.tri:hover .trt{color:var(--ac)}
-.trn{width:20px;height:20px;background:var(--acbg);color:var(--ac);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--fu);font-weight:700;font-size:10px;flex-shrink:0;margin-top:2px}
-.trt{font-size:11px;line-height:1.5;color:var(--tx);font-weight:500}
-/* countdown */
-.cdbox{background:var(--sf2);border-radius:7px;padding:9px 11px;margin-top:8px;border:1px solid var(--bd)}
-.cdlbl{font-size:10px;color:var(--tx3);font-family:var(--fu);margin-bottom:2px}
-.cdnum{font-family:var(--fu);font-size:22px;font-weight:700;color:var(--ac);letter-spacing:3px;font-variant-numeric:tabular-nums}
-.pbwrap{margin-top:4px;background:var(--bd);border-radius:3px;height:3px;overflow:hidden}
-.pbfill{height:100%;background:var(--ac);border-radius:3px;transition:width 1s linear;width:100%}
-.strow{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--tx2);font-family:var(--fu)}
-.stdot{width:7px;height:7px;border-radius:50%;background:var(--gn);animation:bl 2s infinite;flex-shrink:0}
-.stdot.busy{background:var(--gd);animation:spin 1s linear infinite}
-.srcrow{display:flex;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--bd)}
-.srcrow:last-child{border-bottom:none}
-.srcbdg{background:var(--sf2);color:var(--tx3);font-size:9px;font-family:var(--fu);font-weight:600;padding:2px 5px;border-radius:6px;border:1px solid var(--bd)}
-.rfbtn{margin-top:7px;width:100%;padding:5px;background:var(--sf2);color:var(--ac);border:1px solid var(--ac);border-radius:6px;font-family:var(--fu);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
-.rfbtn:hover{background:var(--ac);color:#fff}
+#toast{
+  position:fixed;
+  bottom:70px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.86);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:11px;
+  z-index:9999;
+  opacity:0;
+  transition:opacity .3s;
+  white-space:nowrap;
+  max-width:90vw;
+  text-align:center;
+  pointer-events:none;
+}
+#toast.show{opacity:1;}
 
-/* ─ ARCHIVE ─ */
-#arcsec{display:none;margin-top:4px}
-.arcitem{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd);cursor:pointer;transition:opacity .15s}
-.arcitem:hover{opacity:.75}
-.arcitem:last-child{border-bottom:none}
-.arcimg{width:66px;height:48px;border-radius:6px;flex-shrink:0;display:block;background-size:cover!important;background-position:center!important}
-.arcbody{flex:1;min-width:0}
-.arccat{font-size:9px;color:var(--ac);font-weight:700;font-family:var(--fu);text-transform:uppercase;letter-spacing:.4px}
-.arctitle{font-size:12px;font-weight:600;color:var(--tx);line-height:1.4;margin:2px 0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.arcmeta{font-size:10px;color:var(--tx3);font-family:var(--fu)}
+.sk{
+  background:var(--sf);
+  border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:var(--sh);
+}
+.skimg{height:140px;background:var(--bg2);}
+.skbody{padding:10px;display:flex;flex-direction:column;gap:4px;}
+.skln{height:8px;border-radius:3px;background:var(--bg2);}
+.w6{width:60%;}.w8{width:80%;}.w4{width:40%;}
+.ska{
+  background:linear-gradient(90deg,var(--bg2) 25%,var(--bd) 50%,var(--bg2) 75%);
+  background-size:200% 100%;
+  animation:shim 1.5s infinite;
+}
+@keyframes shim{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
-/* ─ SEARCH ─ */
-#srchbox{background:var(--sf);border-radius:var(--r);padding:12px;margin-bottom:12px;border:2px solid var(--ac);display:none}
-#srchbox h3{font-family:var(--fu);font-size:12px;font-weight:700;margin-bottom:8px;color:var(--ac)}
+.arcitem{
+  display:flex;
+  gap:8px;
+  padding:8px 0;
+  border-bottom:1px solid var(--bd);
+  cursor:pointer;
+  transition:opacity .15s;
+}
+.arcitem:hover{opacity:.75;}
+.arcitem:last-child{border-bottom:none;}
+.arcimg{
+  width:60px;
+  height:45px;
+  border-radius:4px;
+  flex-shrink:0;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.arcbody{flex:1;min-width:0;}
+.arccat{font-size:8px;color:var(--ac);font-weight:700;font-family:var(--fu);}
+.arctitle{font-size:11px;font-weight:600;color:var(--tx);line-height:1.3;margin:2px 0;display:-webkit-box;-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.arcmeta{font-size:9px;color:var(--tx3);font-family:var(--fu);}
 
-/* ─ TOAST ─ */
-#toast{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.86);color:#fff;padding:8px 16px;border-radius:18px;font-size:12px;font-family:var(--fu);z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;max-width:90vw;text-align:center}
-#toast.show{opacity:1}
-
-.lock-err{color:var(--ac);font-size:12px;font-family:var(--fu);margin-top:8px;min-height:18px}
+.empty{text-align:center;padding:30px;color:var(--tx3);grid-column:1/-1;}
+.empty p{font-size:12px;margin-top:5px;}
 </style>
 </head>
 <body>
 
-<!-- NAVBAR with Credit -->
 <nav id="topnav">
   <div class="nb" onclick="showHome()">
     <div class="nlogo">N</div>
     <span class="ntitle">News<span>AI</span> BD <span class="credit-badge">Saham Haque</span></span>
   </div>
   <div class="ncats" id="ncats">
-    <button class="ncat active" data-cat="all" onclick="filterCategory('all')">সব খবর</button>
+    <button class="ncat active" data-cat="all" onclick="filterCategory('all')">সব</button>
     <button class="ncat" data-cat="রাজনীতি" onclick="filterCategory('রাজনীতি')">রাজনীতি</button>
     <button class="ncat" data-cat="খেলাধুলা" onclick="filterCategory('খেলাধুলা')">খেলাধুলা</button>
     <button class="ncat" data-cat="প্রযুক্তি" onclick="filterCategory('প্রযুক্তি')">প্রযুক্তি</button>
@@ -291,85 +1223,78 @@ body{font-family:var(--fb);background:var(--bg);color:var(--tx);min-height:100vh
     <button class="ncat" data-cat="বাংলাদেশ" onclick="filterCategory('বাংলাদেশ')">বাংলাদেশ</button>
     <button class="ncat" data-cat="বিশ্ব" onclick="filterCategory('বিশ্ব')">বিশ্ব</button>
     <button class="ncat" data-cat="live" onclick="filterCategory('live')">🔴 লাইভ</button>
-    <button class="ncat" data-cat="__arc" onclick="showArchive()">📁 আর্কাইভ</button>
+    <button class="ncat" data-cat="__arc" onclick="showArchive()">📁</button>
   </div>
   <div class="nright">
     <div class="srch">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="srchin" placeholder="খবর খুঁজুন..." oninput="handleSearch(this.value)">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="srchin" placeholder="খুঁজুন..." oninput="handleSearch(this.value)">
     </div>
     <button class="ibt" onclick="toggleDark()" title="ডার্ক মোড">
-      <svg id="thicon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="thicon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <button class="admbtn" onclick="openAdmin()">⚙ অ্যাডমিন</button>
+    <button class="admbtn" onclick="openAdmin()">অ্যাডমিন</button>
   </div>
 </nav>
 
-<!-- TICKER -->
 <div id="ticker"><div class="tklbl">🔴 ব্রেকিং</div><div class="tktrack"><div class="tkinner" id="tkinner"></div></div></div>
 
-<!-- LIVE NEWS BAR -->
 <div id="live-news-bar">
   <div class="live-label"><i class="fas fa-circle"></i> লাইভ</div>
   <div class="live-track"><div class="live-inner" id="live-news"></div></div>
 </div>
 
-<!-- MAIN -->
 <div id="wrap">
   <div id="content">
-    <!-- TOP AD (Admin Controlled) -->
     <div class="adbox" id="adtop" style="display:none" onclick="adClick('top')">
       <span class="adlbl">বিজ্ঞাপন</span>
       <span class="ad-close" onclick="event.stopPropagation();closeAd('top')">✕</span>
       <div id="adtop-content"></div>
-      <span class="ad-counter" id="adtop-counter"></span>
     </div>
     
-    <!-- AI STATUS -->
     <div id="ai-status">
       <div class="ai-status-dot" id="aisdot"></div>
-      <span id="ai-status-text">🚀 ১০টি বাংলাদেশি এপিআই + স্বয়ংক্রিয় অনুবাদ</span>
-      <button class="ai-fetch-btn" id="aifetchbtn" onclick="fetchFreshNews()">🔄 নতুন খবর আনুন</button>
+      <span id="ai-status-text">🌍 গুগল ট্রান্সলেট - সব ভাষা বাংলায়</span>
+      <button class="ai-fetch-btn" id="aifetchbtn" onclick="fetchFreshNews()">🔄 নতুন</button>
     </div>
     
-    <!-- SEARCH -->
-    <div id="srchbox"><h3>🔍 খোঁজার ফলাফল</h3><div id="srchres"></div></div>
+    <div id="srchbox"><h3>🔍 ফলাফল</h3><div id="srchres"></div></div>
     
-    <!-- FEATURED -->
     <div id="feat">
       <div class="sh">
         <span class="shtitle">শীর্ষ খবর <span class="livebadge">লাইভ</span></span>
-        <span id="lastupd" style="font-size:10px;color:var(--tx3)"></span>
+        <span id="lastupd" style="font-size:9px;color:var(--tx3)"></span>
       </div>
-      <div class="fg" id="featgrid"></div>
+      <div class="fg" id="featgrid">
+        <div class="sk"><div class="skimg ska"></div></div>
+        <div class="sk"><div class="skimg ska"></div></div>
+        <div class="sk"><div class="skimg ska"></div></div>
+      </div>
     </div>
     
-    <!-- MID AD (Admin Controlled) -->
-    <div class="adbox" id="admid" style="display:none;margin:4px 0 13px" onclick="adClick('mid')">
+    <div class="adbox" id="admid" style="display:none" onclick="adClick('mid')">
       <span class="adlbl">বিজ্ঞাপন</span>
       <span class="ad-close" onclick="event.stopPropagation();closeAd('mid')">✕</span>
       <div id="admid-content"></div>
-      <span class="ad-counter" id="admid-counter"></span>
     </div>
     
-    <!-- NEWS -->
     <div id="newssec">
       <div class="sh">
-        <span class="shtitle" id="gridttl">সর্বশেষ খবর <span class="translate-badge">বাংলায়</span></span>
-        <a class="seeall" href="#" onclick="showArchive();return false">সব দেখুন →</a>
+        <span class="shtitle" id="gridttl">সর্বশেষ খবর</span>
+        <a class="seeall" href="#" onclick="showArchive();return false">সব →</a>
       </div>
-      <div class="ngrid" id="newsgrid"></div>
+      <div class="ngrid" id="newsgrid">
+        <div class="sk"><div class="skimg ska"></div><div class="skbody"><div class="skln w6 ska"></div><div class="skln w8 ska"></div><div class="skln w4 ska"></div></div></div>
+        <div class="sk"><div class="skimg ska"></div><div class="skbody"><div class="skln w6 ska"></div><div class="skln w8 ska"></div><div class="skln w4 ska"></div></div></div>
+      </div>
     </div>
     
-    <!-- BOTTOM AD (Admin Controlled) -->
-    <div class="adbox" id="adbottom" style="display:none;margin:8px 0" onclick="adClick('bottom')">
+    <div class="adbox" id="adbottom" style="display:none" onclick="adClick('bottom')">
       <span class="adlbl">বিজ্ঞাপন</span>
       <span class="ad-close" onclick="event.stopPropagation();closeAd('bottom')">✕</span>
       <div id="adbottom-content"></div>
-      <span class="ad-counter" id="adbottom-counter"></span>
     </div>
     
-    <!-- ARCHIVE -->
     <div id="arcsec">
       <div class="sh">
         <span class="shtitle">📁 আর্কাইভ</span>
@@ -379,59 +1304,48 @@ body{font-family:var(--fb);background:var(--bg);color:var(--tx);min-height:100vh
     </div>
   </div>
 
-  <!-- SIDEBAR -->
   <aside id="sidebar">
     <div class="sw">
-      <div class="wt">📡 এপিআই স্ট্যাটাস</div>
-      <div class="strow"><div class="stdot" id="sbdot"></div><span id="sbstatus">বাংলাদেশি এপিআই + অনুবাদ</span></div>
+      <div class="wt">📡 স্ট্যাটাস</div>
+      <div class="strow"><div class="stdot" id="sbdot"></div><span id="sbstatus">গুগল ট্রান্সলেট</span></div>
       <div class="cdbox">
-        <div class="cdlbl">পরবর্তী আপডেট</div>
+        <div class="cdlbl">পরবর্তী</div>
         <div class="cdnum" id="cdnum">30:00</div>
         <div class="pbwrap"><div class="pbfill" id="pbfill"></div></div>
       </div>
-      <button class="rfbtn" onclick="fetchFreshNews()">🤖 নতুন খবর</button>
+      <button class="rfbtn" onclick="fetchFreshNews()">আপডেট</button>
     </div>
     <div class="sw">
       <div class="wt">🔥 ট্রেন্ডিং</div>
       <div id="trlist"></div>
     </div>
-    
-    <!-- SIDEBAR AD (Admin Controlled) -->
-    <div class="sw adbox" id="adside" style="display:none;margin-bottom:0" onclick="adClick('side')">
+    <div class="sw adbox" id="adside" style="display:none" onclick="adClick('side')">
       <span class="adlbl">বিজ্ঞাপন</span>
       <span class="ad-close" onclick="event.stopPropagation();closeAd('side')">✕</span>
       <div id="adside-content"></div>
-      <span class="ad-counter" id="adside-counter"></span>
     </div>
-    
     <div class="sw">
-      <div class="wt">📰 বাংলাদেশি মিডিয়া এপিআই</div>
+      <div class="wt">📰 সূত্র</div>
       <div class="srcrow"><span>প্রথম আলো</span><span class="srcbdg">বাংলা</span></div>
       <div class="srcrow"><span>BDNews24</span><span class="srcbdg">বাংলা</span></div>
-      <div class="srcrow"><span>দৈনিক যুগান্তর</span><span class="srcbdg">বাংলা</span></div>
-      <div class="srcrow"><span>কালের কণ্ঠ</span><span class="srcbdg">বাংলা</span></div>
-      <div class="srcrow"><span>সমকাল</span><span class="srcbdg">বাংলা</span></div>
-      <div class="srcrow"><span>The Daily Star</span><span class="srcbdg">ইংরেজি→বাংলা</span></div>
-      <div class="srcrow"><span>Dhaka Tribune</span><span class="srcbdg">ইংরেজি→বাংলা</span></div>
-      <div class="srcrow"><span>BBC বাংলা</span><span class="srcbdg">বাংলা</span></div>
-      <div class="srcrow"><span>দৈনিক ইত্তেফাক</span><span class="srcbdg">বাংলা</span></div>
-      <div class="srcrow"><span>দৈনিক সংবাদ</span><span class="srcbdg">বাংলা</span></div>
+      <div class="srcrow"><span>The Daily Star</span><span class="srcbdg">ইং→বাংলা</span></div>
+      <div class="srcrow"><span>BBC</span><span class="srcbdg">ইং→বাংলা</span></div>
+      <div class="srcrow"><span>Reuters</span><span class="srcbdg">ইং→বাংলা</span></div>
+      <div class="srcrow"><span>CNN</span><span class="srcbdg">ইং→বাংলা</span></div>
     </div>
   </aside>
 </div>
 
-<!-- FOOTER with Credit -->
 <footer>
   <div class="figrid">
     <div class="fbrand">
       <h2>News<span>AI</span> BD <span class="footer-credit">Saham Haque</span></h2>
-      <p>১০টি বাংলাদেশি এপিআই + স্বয়ংক্রিয় অনুবাদ | সব খবর বাংলায় | আসল ছবি সহ</p>
-      <p style="margin-top:10px;font-size:11px;">Made with ❤️ by <strong>Saham Haque</strong> — ২০২৫</p>
+      <p>গুগল ট্রান্সলেট - সব সংবাদ বাংলায় | বাংলাদেশি ও আন্তর্জাতিক মিডিয়া</p>
+      <p style="margin-top:5px;font-size:9px;">Made with ❤️ by <strong>Saham Haque</strong> — ২০২৫</p>
     </div>
   </div>
 </footer>
 
-<!-- EXPLAIN MODAL -->
 <div class="ov" id="exov" onclick="if(event.target===this)closeModal('exov')">
   <div class="md">
     <div class="mdhd">
@@ -440,685 +1354,392 @@ body{font-family:var(--fb);background:var(--bg);color:var(--tx);min-height:100vh
     </div>
     <div class="mdbody">
       <div class="news-full" id="full-article"></div>
-      <div style="margin:10px 0 5px;font-weight:600">🤖 এআই বিশ্লেষণ:</div>
+      <div style="margin:8px 0 3px;font-weight:600;font-size:11px;">🤖 এআই বিশ্লেষণ:</div>
       <div class="airesp" id="exbody"><div class="dots"><span></span><span></span><span></span></div></div>
     </div>
   </div>
 </div>
 
-<!-- ADMIN MODAL -->
 <div class="ov" id="admov" onclick="if(event.target===this)closeModal('admov')">
   <div class="md">
-    <div class="mdhd"><h3>⚙️ অ্যাডমিন প্যানেল <span class="credit-badge-modal">Saham Haque</span></h3><button class="mdx" onclick="closeModal('admov')">✕</button></div>
+    <div class="mdhd"><h3>⚙️ অ্যাডমিন <span class="credit-badge-modal">Saham Haque</span></h3><button class="mdx" onclick="closeModal('admov')">✕</button></div>
     <div class="mdbody">
       <div id="admlogin"></div>
       <div id="admdash" style="display:none">
-        <div class="admtabs">
-          <button class="admtab active" onclick="switchTab('stats')">📊 পরিসংখ্যান</button>
-          <button class="admtab" onclick="switchTab('ads')">📢 বিজ্ঞাপন</button>
-          <button class="admtab" onclick="switchTab('newad')">➕ নতুন বিজ্ঞাপন</button>
-          <button class="admtab" onclick="switchTab('settings')">⚙️ সেটিংস</button>
-        </div>
-        
-        <div class="admsec active" id="sec-stats">
-          <div class="sgrid">
-            <div class="scard"><div class="sbig" id="st-n">0</div><div class="ssub">সক্রিয় খবর</div></div>
-            <div class="scard"><div class="sbig" id="st-a">0</div><div class="ssub">আর্কাইভ</div></div>
-            <div class="scard"><div class="sbig" id="st-ad">0</div><div class="ssub">সক্রিয় বিজ্ঞাপন</div></div>
-            <div class="scard"><div class="sbig" id="st-click">0</div><div class="ssub">মোট ক্লিক</div></div>
-          </div>
-          <div style="background:var(--sf2);border-radius:7px;padding:9px;margin-top:10px;">
-            <p><strong>📊 অনুবাদ স্ট্যাটাস:</strong> <span id="api-stats">সক্রিয়</span></p>
-            <p><strong>⏱ শেষ আপডেট:</strong> <span id="st-last">—</span></p>
-          </div>
-        </div>
-        
-        <div class="admsec" id="sec-ads">
-          <div id="adlist"></div>
-        </div>
-        
-        <div class="admsec" id="sec-newad">
-          <div class="ad-form-section">
-            <h4>➕ নতুন বিজ্ঞাপন তৈরি করুন</h4>
-            <div class="fc">
-              <label>বিজ্ঞাপনের শিরোনাম *</label>
-              <input type="text" class="fi" id="ad-title" placeholder="যেমন: বসুন্ধরা গ্রুপ">
-            </div>
-            <div class="fc">
-              <label>বিবরণ</label>
-              <textarea class="fi" id="ad-desc" rows="2" placeholder="বিজ্ঞাপনের বিবরণ..."></textarea>
-            </div>
-            <div class="fc">
-              <label>লিংক URL (ঐচ্ছিক)</label>
-              <input type="text" class="fi" id="ad-link" placeholder="https://example.com">
-            </div>
-            <div class="fc">
-              <label>ছবি URL (ঐচ্ছিক)</label>
-              <input type="text" class="fi" id="ad-image" placeholder="https://example.com/image.jpg">
-            </div>
-            <div class="fc">
-              <label>অবস্থান</label>
-              <select class="fi" id="ad-position">
-                <option value="top">উপরে (Top)</option>
-                <option value="mid">মাঝখানে (Middle)</option>
-                <option value="bottom">নিচে (Bottom)</option>
-                <option value="side">পাশে (Sidebar)</option>
-                <option value="popup">পপআপ (Popup)</option>
-              </select>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-              <div class="fc">
-                <label>শুরুর তারিখ</label>
-                <input type="date" class="fi" id="ad-start">
-              </div>
-              <div class="fc">
-                <label>শেষের তারিখ</label>
-                <input type="date" class="fi" id="ad-end">
-              </div>
-            </div>
-            <button class="btnp" onclick="saveAd()" style="width:100%">💾 বিজ্ঞাপন সংরক্ষণ করুন</button>
-          </div>
-        </div>
-        
-        <div class="admsec" id="sec-settings">
-          <div class="fc">
-            <label>অ্যাডমিন পাসওয়ার্ড পরিবর্তন</label>
-            <input type="password" class="fi" id="new-pw" placeholder="নতুন পাসওয়ার্ড">
-          </div>
-          <div class="fc">
-            <label>নিশ্চিত করুন</label>
-            <input type="password" class="fi" id="confirm-pw" placeholder="পুনরায় লিখুন">
-          </div>
-          <button class="btnp" onclick="changePassword()">পাসওয়ার্ড পরিবর্তন</button>
-          <div id="pw-message" style="font-size:11px;margin-top:5px;"></div>
-          <hr>
-          <button class="btnp" style="background:var(--tx3)" onclick="adminLogout()">লগআউট</button>
-        </div>
+        <div class="fc"><label>নতুন পাসওয়ার্ড</label><input type="password" class="fi" id="new-pw" placeholder="পাসওয়ার্ড"></div>
+        <div class="fc"><label>নিশ্চিত করুন</label><input type="password" class="fi" id="confirm-pw" placeholder="আবার লিখুন"></div>
+        <button class="btnp" onclick="changePassword()">পরিবর্তন</button>
+        <div id="pw-message" style="font-size:10px;"></div>
+        <hr>
+        <button class="btnp" style="background:var(--tx3)" onclick="adminLogout()">লগআউট</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- MAIN CHAT BUBBLE -->
 <div id="chatbub">
   <div id="chatpanel">
     <div class="chhd">
       <div class="chav">🤖</div>
-      <div><h4>এআই সহকারী <span>Saham Haque</span></h4><p>বাংলাদেশি মিডিয়া + অনুবাদ</p></div>
+      <div class="chhdi"><h4>AI সহকারী <span>Saham Haque</span></h4><p>গুগল ট্রান্সলেট</p></div>
       <button class="chx" onclick="closeChat()">✕</button>
     </div>
     <div id="chatmsgs">
-      <div class="msga"><div class="ailbl">🤖 NewsAI</div>আস্সালামু আলাইকুম! ১০টি বাংলাদেশি মিডিয়া থেকে খবর আনা হচ্ছে। সব খবর স্বয়ংক্রিয়ভাবে বাংলায় অনুবাদ করা হয়। প্রশ্ন করুন।</div>
+      <div class="msga"><div class="ailbl">🤖 NewsAI</div>আস্সালামু আলাইকুম! গুগল ট্রান্সলেট ব্যবহার করে সব সংবাদ বাংলায় পড়ুন।</div>
     </div>
     <div class="chinrow">
       <input type="text" id="chatin" placeholder="প্রশ্ন..." onkeydown="if(event.key==='Enter')sendMainChat()">
-      <button class="chsend" onclick="sendMainChat()" id="main-chat-send">➤</button>
+      <button class="chsend" onclick="sendMainChat()">➤</button>
     </div>
   </div>
   <button class="chatopenbtn" onclick="toggleChat()"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></button>
 </div>
 
-<!-- POPUP AD -->
-<div id="adpopup" style="display:none;position:fixed;bottom:80px;right:16px;z-index:1500;max-width:280px;cursor:pointer" onclick="adClick('popup')">
+<div id="adpopup" style="display:none;position:fixed;bottom:70px;right:12px;z-index:1500;max-width:240px;cursor:pointer" onclick="adClick('popup')">
   <span class="adlbl">বিজ্ঞাপন</span>
-  <button onclick="event.stopPropagation();this.parentElement.style.display='none'" style="position:absolute;top:4px;right:8px;background:none;border:none;cursor:pointer">✕</button>
-  <div id="adpopup-content" style="margin-top:18px"></div>
+  <div class="ad-close-popup" onclick="event.stopPropagation();closeAd('popup')" style="position:absolute;top:5px;right:5px;background:var(--sf);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid var(--bd);font-size:10px;">✕</div>
+  <div id="adpopup-content" style="margin-top:18px;"></div>
 </div>
 
 <div id="toast"></div>
 
-<!-- ==================== COMPLETE JAVASCRIPT ==================== -->
 <script>
 'use strict';
 
-// ==================== CREDIT ====================
-console.log('%c 🌐 NewsAI BD — 10 Bangladeshi APIs + Auto Translation — Developed by Saham Haque', 'background: #c0392b; color: #fff; font-size: 16px; padding: 6px;');
-console.log('© 2025 Saham Haque - All Rights Reserved');
+console.log('%c 🌐 NewsAI BD — Google Translate Integration — Saham Haque', 'background: #c0392b; color: #fff; font-size: 14px; padding: 4px;');
 
-// ==================== STORAGE KEYS ====================
-var K = {
-  PW:   'nai_pw', 'NEWS': 'nai_news', 'ARC': 'nai_archive',
-  ADS:  'nai_ads', 'SESS': 'nai_session', 'CNT': 'nai_upcnt'
-};
+var K = {PW:'nai_pw', NEWS:'nai_news', ARC:'nai_archive', ADS:'nai_ads', SESS:'nai_session', CNT:'nai_upcnt'};
 
-// ==================== FREE TRANSLATION API ====================
 async function translateToBangla(text) {
-  if(!text || text.length < 5) return text;
-  
-  // Check if already Bengali (contains Bengali characters)
-  var bengaliRegex = /[\u0980-\u09FF]/;
-  if(bengaliRegex.test(text)) {
-    return text; // Already Bengali
-  }
+  if(!text || text.length < 3) return text;
+  if(/[\u0980-\u09FF]/.test(text)) return text;
   
   try {
-    // Using MyMemory Translation API (free, no key required)
-    var response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|bn`);
-    var data = await response.json();
-    
-    if(data.responseData && data.responseData.translatedText) {
-      return data.responseData.translatedText;
+    const response = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=bn&dt=t&q=${encodeURIComponent(text)}`);
+    if(response.ok) {
+      const data = await response.json();
+      if(data && data[0]) {
+        let translatedText = '';
+        data[0].forEach(item => { if(item[0]) translatedText += item[0]; });
+        if(translatedText) return translatedText;
+      }
     }
   } catch(e) {
-    console.log('Translation error:', e);
+    console.log('Translation error, using fallback');
+    try {
+      const response2 = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|bn`);
+      const data2 = await response2.json();
+      if(data2.responseData && data2.responseData.translatedText) {
+        return data2.responseData.translatedText;
+      }
+    } catch(e2) {}
   }
-  
-  return text; // Return original if translation fails
+  return text;
 }
 
-// ==================== BANGLADESHI NEWS RSS FEEDS ====================
-var BD_RSS_FEEDS = [
-  // Bengali News Portals
-  { name: 'প্রথম আলো', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/feed/', category: 'বাংলাদেশ', lang: 'bn' },
-  { name: 'প্রথম আলো রাজনীতি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/politics/feed/', category: 'রাজনীতি', lang: 'bn' },
-  { name: 'প্রথম আলো খেলাধুলা', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/sports/feed/', category: 'খেলাধুলা', lang: 'bn' },
-  { name: 'প্রথম আলো প্রযুক্তি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/technology/feed/', category: 'প্রযুক্তি', lang: 'bn' },
-  { name: 'প্রথম আলো অর্থনীতি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/business/feed/', category: 'অর্থনীতি', lang: 'bn' },
-  { name: 'প্রথম আলো বিনোদন', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/entertainment/feed/', category: 'বিনোদন', lang: 'bn' },
-  { name: 'প্রথম আলো আন্তর্জাতিক', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/world/feed/', category: 'আন্তর্জাতিক', lang: 'bn' },
-  
-  { name: 'BDNews24', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://bangla.bdnews24.com/feed/', category: 'বাংলাদেশ', lang: 'bn' },
-  { name: 'BDNews24 রাজনীতি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://bangla.bdnews24.com/politics/feed/', category: 'রাজনীতি', lang: 'bn' },
-  { name: 'BDNews24 খেলাধুলা', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://bangla.bdnews24.com/sports/feed/', category: 'খেলাধুলা', lang: 'bn' },
-  { name: 'BDNews24 প্রযুক্তি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://bangla.bdnews24.com/tech/feed/', category: 'প্রযুক্তি', lang: 'bn' },
-  { name: 'BDNews24 অর্থনীতি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://bangla.bdnews24.com/business/feed/', category: 'অর্থনীতি', lang: 'bn' },
-  { name: 'BDNews24 বিনোদন', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://bangla.bdnews24.com/entertainment/feed/', category: 'বিনোদন', lang: 'bn' },
-  
-  { name: 'দৈনিক যুগান্তর', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.jugantor.com/feed/', category: 'বাংলাদেশ', lang: 'bn' },
-  { name: 'দৈনিক যুগান্তর রাজনীতি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.jugantor.com/politics/feed/', category: 'রাজনীতি', lang: 'bn' },
-  { name: 'দৈনিক যুগান্তর খেলাধুলা', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.jugantor.com/sports/feed/', category: 'খেলাধুলা', lang: 'bn' },
-  { name: 'দৈনিক যুগান্তর প্রযুক্তি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.jugantor.com/tech/feed/', category: 'প্রযুক্তি', lang: 'bn' },
-  { name: 'দৈনিক যুগান্তর অর্থনীতি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.jugantor.com/economy/feed/', category: 'অর্থনীতি', lang: 'bn' },
-  
-  { name: 'কালের কণ্ঠ', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.kalerkantho.com/feed/', category: 'বাংলাদেশ', lang: 'bn' },
-  { name: 'কালের কণ্ঠ রাজনীতি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.kalerkantho.com/online/politics/feed/', category: 'রাজনীতি', lang: 'bn' },
-  { name: 'কালের কণ্ঠ খেলাধুলা', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.kalerkantho.com/online/sports/feed/', category: 'খেলাধুলা', lang: 'bn' },
-  
-  { name: 'সমকাল', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.samakal.com/feed/', category: 'বাংলাদেশ', lang: 'bn' },
-  { name: 'সমকাল রাজনীতি', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.samakal.com/politics/feed/', category: 'রাজনীতি', lang: 'bn' },
-  { name: 'সমকাল খেলাধুলা', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.samakal.com/sports/feed/', category: 'খেলাধুলা', lang: 'bn' },
-  
-  // English Newspapers (Need Translation)
-  { name: 'The Daily Star', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/frontpage/rss.xml', category: 'বাংলাদেশ', lang: 'en' },
-  { name: 'The Daily Star Politics', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/politics/rss.xml', category: 'রাজনীতি', lang: 'en' },
-  { name: 'The Daily Star Sports', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/sports/rss.xml', category: 'খেলাধুলা', lang: 'en' },
-  { name: 'The Daily Star Tech', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/tech-startup/rss.xml', category: 'প্রযুক্তি', lang: 'en' },
-  { name: 'The Daily Star Business', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/business/rss.xml', category: 'ব্যবসা', lang: 'en' },
-  { name: 'The Daily Star World', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/world/rss.xml', category: 'আন্তর্জাতিক', lang: 'en' },
-  { name: 'The Daily Star Entertainment', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/entertainment/rss.xml', category: 'বিনোদন', lang: 'en' },
-  
-  { name: 'Dhaka Tribune', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.dhakatribune.com/feed/', category: 'বাংলাদেশ', lang: 'en' },
-  { name: 'Dhaka Tribune Politics', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.dhakatribune.com/bangladesh/politics/feed/', category: 'রাজনীতি', lang: 'en' },
-  { name: 'Dhaka Tribune Sports', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.dhakatribune.com/sports/feed/', category: 'খেলাধুলা', lang: 'en' },
-  { name: 'Dhaka Tribune Business', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.dhakatribune.com/business/feed/', category: 'ব্যবসা', lang: 'en' },
-  
-  // International with Bengali Section
-  { name: 'BBC বাংলা', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.bbc.com/bengali/index.xml', category: 'আন্তর্জাতিক', lang: 'bn' },
-  
-  { name: 'দৈনিক ইত্তেফাক', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.ittefaq.com.bd/feed/', category: 'বাংলাদেশ', lang: 'bn' },
-  { name: 'দৈনিক সংবাদ', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.dailysangbad.com/feed/', category: 'বাংলাদেশ', lang: 'bn' },
-  { name: 'দৈনিক ইনকিলাব', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.dailyinqilab.com/feed/', category: 'বাংলাদেশ', lang: 'bn' },
-  { name: 'দৈনিক ভোরের কাগজ', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.bhorerkagoj.com/feed/', category: 'বাংলাদেশ', lang: 'bn' },
-  { name: 'দৈনিক মানবজমিন', url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.mzamin.com/feed.php', category: 'বাংলাদেশ', lang: 'bn' }
+var NEWS_SOURCES = [
+  {name:'প্রথম আলো', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/feed/', cat:'বাংলাদেশ', lang:'bn', country:'বাংলাদেশ'},
+  {name:'প্রথম আলো রাজনীতি', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/politics/feed/', cat:'রাজনীতি', lang:'bn', country:'বাংলাদেশ'},
+  {name:'প্রথম আলো খেলাধুলা', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/sports/feed/', cat:'খেলাধুলা', lang:'bn', country:'বাংলাদেশ'},
+  {name:'প্রথম আলো প্রযুক্তি', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/technology/feed/', cat:'প্রযুক্তি', lang:'bn', country:'বাংলাদেশ'},
+  {name:'প্রথম আলো অর্থনীতি', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.prothomalo.com/business/feed/', cat:'অর্থনীতি', lang:'bn', country:'বাংলাদেশ'},
+  {name:'BDNews24', url:'https://api.rss2json.com/v1/api.json?rss_url=https://bangla.bdnews24.com/feed/', cat:'বাংলাদেশ', lang:'bn', country:'বাংলাদেশ'},
+  {name:'BDNews24 রাজনীতি', url:'https://api.rss2json.com/v1/api.json?rss_url=https://bangla.bdnews24.com/politics/feed/', cat:'রাজনীতি', lang:'bn', country:'বাংলাদেশ'},
+  {name:'BDNews24 খেলাধুলা', url:'https://api.rss2json.com/v1/api.json?rss_url=https://bangla.bdnews24.com/sports/feed/', cat:'খেলাধুলা', lang:'bn', country:'বাংলাদেশ'},
+  {name:'দৈনিক যুগান্তর', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.jugantor.com/feed/', cat:'বাংলাদেশ', lang:'bn', country:'বাংলাদেশ'},
+  {name:'কালের কণ্ঠ', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.kalerkantho.com/feed/', cat:'বাংলাদেশ', lang:'bn', country:'বাংলাদেশ'},
+  {name:'সমকাল', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.samakal.com/feed/', cat:'বাংলাদেশ', lang:'bn', country:'বাংলাদেশ'},
+  {name:'BBC বাংলা', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.bbc.com/bengali/index.xml', cat:'আন্তর্জাতিক', lang:'bn', country:'যুক্তরাজ্য'},
+  {name:'The Daily Star', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/frontpage/rss.xml', cat:'বাংলাদেশ', lang:'en', country:'বাংলাদেশ'},
+  {name:'The Daily Star Politics', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/politics/rss.xml', cat:'রাজনীতি', lang:'en', country:'বাংলাদেশ'},
+  {name:'The Daily Star Sports', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.thedailystar.net/sports/rss.xml', cat:'খেলাধুলা', lang:'en', country:'বাংলাদেশ'},
+  {name:'Dhaka Tribune', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.dhakatribune.com/feed/', cat:'বাংলাদেশ', lang:'en', country:'বাংলাদেশ'},
+  {name:'BBC World', url:'https://api.rss2json.com/v1/api.json?rss_url=http://feeds.bbci.co.uk/news/world/rss.xml', cat:'বিশ্ব', lang:'en', country:'যুক্তরাজ্য'},
+  {name:'BBC Politics', url:'https://api.rss2json.com/v1/api.json?rss_url=http://feeds.bbci.co.uk/news/politics/rss.xml', cat:'রাজনীতি', lang:'en', country:'যুক্তরাজ্য'},
+  {name:'BBC Business', url:'https://api.rss2json.com/v1/api.json?rss_url=http://feeds.bbci.co.uk/news/business/rss.xml', cat:'অর্থনীতি', lang:'en', country:'যুক্তরাজ্য'},
+  {name:'Reuters World', url:'https://api.rss2json.com/v1/api.json?rss_url=https://feeds.reuters.com/reuters/worldnews', cat:'বিশ্ব', lang:'en', country:'যুক্তরাজ্য'},
+  {name:'Reuters Business', url:'https://api.rss2json.com/v1/api.json?rss_url=https://feeds.reuters.com/reuters/businessNews', cat:'ব্যবসা', lang:'en', country:'যুক্তরাজ্য'},
+  {name:'AP News', url:'https://api.rss2json.com/v1/api.json?rss_url=https://rsshub.app/apnews', cat:'বিশ্ব', lang:'en', country:'মার্কিন যুক্তরাষ্ট্র'},
+  {name:'Al Jazeera', url:'https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml', cat:'আন্তর্জাতিক', lang:'en', country:'কাতার'},
+  {name:'CNN World', url:'https://api.rss2json.com/v1/api.json?rss_url=http://rss.cnn.com/rss/edition_world.rss', cat:'বিশ্ব', lang:'en', country:'মার্কিন যুক্তরাষ্ট্র'}
 ];
 
-// ==================== ALL SOURCES ====================
-var ALL_SOURCES = BD_RSS_FEEDS;
-
-// ==================== STATE ====================
 var adminPwHash = localStorage.getItem(K.PW) || '';
 var ads = safeJSON(K.ADS, []);
 var news = [];
 var archive = safeJSON(K.ARC, []);
 var isAdmin = sessionStorage.getItem(K.SESS) === '1';
-var currentCategory = 'all';
+var currentCat = 'all';
 var cdTimer = null;
 var countdown = 1800;
 var srchTm = null;
 var _toastTm = null;
 var isFetching = false;
-var liveNewsInterval = null;
-var activeNewsId = null;
+var liveInterval = null;
 var chatBusy = false;
-var chatIsOpen = false;
-var updateCount = parseInt(localStorage.getItem(K.CNT) || '0');
+var chatOpen = false;
+var updCnt = parseInt(localStorage.getItem(K.CNT) || '0');
 
-// ==================== HELPER FUNCTIONS ====================
-function safeJSON(key, def) { try { var v = localStorage.getItem(key); return v ? JSON.parse(v) : def; } catch(e){ return def; } }
-function saveJSON(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){ console.warn('save failed'); } }
+function safeJSON(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }
+function saveJSON(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 function esc(s) { return String(s||'').replace(/[&<>"]/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]; }); }
 function hashStr(s) { var h=0; for(var i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0;} return 'h'+Math.abs(h).toString(36); }
-function shuffleArray(array) { var a = [...array]; for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
-function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+function shuffle(a) { for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function sleep(ms) { return new Promise(r=>setTimeout(r,ms)); }
 
-// ==================== EXTRACT IMAGE FROM ARTICLE ====================
 function extractImage(item) {
-  // Try enclosure
   if(item.enclosure && item.enclosure.link) return item.enclosure.link;
-  
-  // Try thumbnail
   if(item.thumbnail) return item.thumbnail;
-  
-  // Try to extract from description
-  var desc = item.description || '';
-  var imgMatch = desc.match(/<img[^>]+src="([^">]+)"/);
-  if(imgMatch && imgMatch[1]) return imgMatch[1];
-  
-  // Try content
-  if(item.content) {
-    var contentMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
-    if(contentMatch && contentMatch[1]) return contentMatch[1];
-  }
-  
-  // Return placeholder based on category
-  var seed = Math.floor(Math.random() * 100) + 1;
-  return `https://picsum.photos/id/${seed}/600/400`;
+  var d = item.description||'';
+  var m = d.match(/<img[^>]+src="([^">]+)"/);
+  if(m && m[1]) return m[1];
+  return `https://picsum.photos/id/${Math.floor(Math.random()*50)+1}/600/400`;
 }
 
-// ==================== FORMAT TIME ====================
-function formatTime(dateString) {
-  if(!dateString) return 'এইমাত্র';
-  var date = new Date(dateString);
-  var now = new Date();
-  var seconds = Math.floor((now - date) / 1000);
-  if(seconds < 60) return 'এইমাত্র';
-  if(seconds < 3600) return Math.floor(seconds/60) + ' মিনিট আগে';
-  if(seconds < 86400) return Math.floor(seconds/3600) + ' ঘণ্টা আগে';
-  if(seconds < 604800) return Math.floor(seconds/86400) + ' দিন আগে';
-  return Math.floor(seconds/604800) + ' সপ্তাহ আগে';
+function formatTime(d) {
+  if(!d) return 'এইমাত্র';
+  var date = new Date(d);
+  var sec = Math.floor((Date.now()-date)/1000);
+  if(sec<60) return 'এইমাত্র';
+  if(sec<3600) return Math.floor(sec/60)+' মিনিট আগে';
+  if(sec<86400) return Math.floor(sec/3600)+' ঘণ্টা আগে';
+  return Math.floor(sec/86400)+' দিন আগে';
 }
 
-// ==================== FETCH NEWS WITH TRANSLATION ====================
 async function fetchFreshNews() {
-  if(isFetching) { showToast('⏳ ইতিমধ্যে কাজ চলছে...'); return; }
+  if(isFetching) { showToast('⏳ কাজ চলছে...'); return; }
   
   isFetching = true;
   var btn = document.getElementById('aifetchbtn');
-  var rfbtn = document.querySelector('.rfbtn');
+  if(btn) btn.disabled = true;
   
-  if(btn) { btn.disabled = true; btn.textContent = '⏳ সংবাদ ও অনুবাদ...'; }
-  if(rfbtn) { rfbtn.disabled = true; rfbtn.textContent = '⏳ সংগ্রহ...'; }
-  
-  setAiStatus('loading', '📡 বাংলাদেশি মিডিয়া থেকে খবর সংগ্রহ ও অনুবাদ...');
+  setAiStatus('loading', '🌍 গুগল ট্রান্সলেট দিয়ে সব খবর বাংলায় অনুবাদ...');
   showToast('🔄 সংবাদ আনা হচ্ছে...');
   
   try {
-    // Archive old news
-    if(news.length > 0) {
-      archive = news.concat(archive).slice(0, 100);
+    if(news.length) {
+      archive = news.concat(archive).slice(0,100);
       saveJSON(K.ARC, archive);
     }
     
     var allNews = [];
-    var successfulApis = 0;
-    var translationCount = 0;
+    var transCount = 0;
+    var totalCount = 0;
+    var shuffledSources = shuffle([...NEWS_SOURCES]);
     
-    // Fetch from all sources
-    for(var i = 0; i < ALL_SOURCES.length; i++) {
-      var source = ALL_SOURCES[i];
-      
+    for(var i=0; i<shuffledSources.length; i++) {
+      var src = shuffledSources[i];
       try {
-        setAiStatus('loading', `📡 ${source.name} থেকে খবর... (${i+1}/${ALL_SOURCES.length})`);
-        
-        var response = await fetch(source.url);
-        
-        if(response.ok) {
-          var data = await response.json();
-          
-          if(data.items && data.items.length > 0) {
-            var sourceNews = [];
-            
-            for(var j = 0; j < Math.min(2, data.items.length); j++) {
+        setAiStatus('loading', `📡 ${src.name} (${src.country})...`);
+        var res = await fetch(src.url);
+        if(res.ok) {
+          var data = await res.json();
+          if(data.items && data.items.length) {
+            for(var j=0; j<Math.min(2, data.items.length); j++) {
               var item = data.items[j];
-              var title = item.title || 'শিরোনাম নেই';
-              var description = (item.description || '').replace(/<[^>]*>/g, '').substring(0, 200);
-              var imageUrl = extractImage(item);
+              var title = item.title || '';
+              var desc = (item.description||'').replace(/<[^>]*>/g,'').substring(0,200);
+              var originalTitle = title;
               
-              var newsItem = {
-                id: Date.now() + i * 1000 + j + Math.random(),
-                title: title,
-                originalTitle: title,
-                category: source.category,
-                source: source.name,
-                summary: description,
-                full: description + (item.content ? ' ' + item.content.replace(/<[^>]*>/g, '') : ''),
-                time: formatTime(item.pubDate),
-                img: imageUrl,
-                link: item.link || '#',
-                originalLang: source.lang,
-                translated: false
-              };
-              
-              // Translate if needed
-              if(source.lang === 'en') {
-                setAiStatus('loading', `🔤 অনুবাদ: ${source.name} (${translationCount+1})`);
-                newsItem.title = await translateToBangla(title);
-                newsItem.summary = await translateToBangla(description);
-                newsItem.translated = true;
-                translationCount++;
-                await sleep(100); // Prevent rate limiting
+              if(src.lang !== 'bn') {
+                setAiStatus('loading', `🔤 গুগল ট্রান্সলেট: ${src.name}`);
+                title = await translateToBangla(title);
+                if(desc) desc = await translateToBangla(desc);
+                transCount++;
+                await sleep(200);
               }
               
-              sourceNews.push(newsItem);
+              allNews.push({
+                id: Date.now() + i*100 + j,
+                title: title,
+                originalTitle: src.lang !== 'bn' ? originalTitle : null,
+                cat: src.cat,
+                source: `${src.name} (${src.country})`,
+                sum: desc,
+                time: formatTime(item.pubDate),
+                img: extractImage(item),
+                link: item.link||'#',
+                translated: src.lang !== 'bn'
+              });
+              totalCount++;
             }
-            
-            allNews = allNews.concat(sourceNews);
-            successfulApis++;
           }
         }
-      } catch(e) {
-        console.log('Source error:', source.name, e);
-      }
-      
-      await sleep(50);
+      } catch(e) { console.log('Error:', src.name); }
+      await sleep(100);
+      if(totalCount >= 30) break;
     }
     
-    // If no news, use fallback
-    if(allNews.length === 0) {
-      allNews = getFallbackNews();
-    }
-    
-    // Shuffle and take top 30
-    allNews = shuffleArray(allNews);
-    news = allNews.slice(0, 30);
-    
-    // Update counters
-    updateCount++;
-    localStorage.setItem(K.CNT, updateCount);
-    
-    // Save and render
+    news = shuffle(allNews).slice(0,25);
     saveJSON(K.NEWS, news);
+    updCnt++;
+    localStorage.setItem(K.CNT, updCnt);
     renderAll();
     setLastUpd();
+    setAiStatus('ready', `✅ ${news.length}টি খবর, ${transCount}টি গুগল অনূদিত`);
+    showToast(`✅ নতুন খবর এসেছে!`);
     
-    // Update stats
-    var stLast = document.getElementById('st-last');
-    if(stLast) stLast.textContent = new Date().toLocaleTimeString('bn-BD');
-    
-    setAiStatus('ready', `✅ ${successfulApis}টি উৎস থেকে ${news.length}টি খবর | ${translationCount}টি অনূদিত`);
-    showToast(`✅ ${news.length}টি নতুন খবর এসেছে!`);
-    
-  } catch(error) {
-    setAiStatus('error', '❌ সংবাদ সংগ্রহে সমস্যা');
-    showToast('❌ ব্যর্থ হয়েছে');
-    console.error(error);
-    
-    if(news.length === 0) {
-      news = getFallbackNews();
-      renderAll();
-    }
+  } catch(e) {
+    setAiStatus('error', '❌ সমস্যা');
+    showToast('❌ ব্যর্থ');
   }
   
   isFetching = false;
-  if(btn) { btn.disabled = false; btn.textContent = '🔄 নতুন খবর আনুন'; }
-  if(rfbtn) { rfbtn.disabled = false; rfbtn.textContent = '🤖 নতুন খবর'; }
+  if(btn) btn.disabled = false;
 }
 
-// ==================== FALLBACK NEWS ====================
-function getFallbackNews() {
-  var fallback = [];
-  var titles = [
-    'বাংলাদেশের অর্থনীতি দ্রুত বর্ধনশীল',
-    'ঢাকায় আন্তর্জাতিক চলচ্চিত্র উৎসব শুরু',
-    'প্রধানমন্ত্রীর সংবাদ সম্মেলন আজ',
-    'বাংলাদেশ ক্রিকেট দলের জয়',
-    'প্রযুক্তি খাতে নতুন বিনিয়োগ',
-    'বিশ্বব্যাংকের নতুন ঋণ অনুমোদন',
-    'শিক্ষা ব্যবস্থায় ডিজিটাল রূপান্তর',
-    'স্বাস্থ্যখাতে নতুন উদ্যোগ'
-  ];
-  
-  var categories = ['রাজনীতি', 'খেলাধুলা', 'প্রযুক্তি', 'অর্থনীতি', 'বিনোদন', 'বাংলাদেশ'];
-  
-  for(var i = 0; i < 15; i++) {
-    fallback.push({
-      id: Date.now() + i,
-      title: titles[i % titles.length],
-      category: categories[i % categories.length],
-      source: 'NewsAI BD',
-      summary: 'বিস্তারিত খবর আসছে...',
-      full: 'বিস্তারিত খবর আসছে...',
-      time: 'এইমাত্র',
-      img: 'https://picsum.photos/id/' + (i + 10) + '/600/400',
-      link: '#'
-    });
-  }
-  return fallback;
-}
-
-// ==================== RENDER FUNCTIONS ====================
 function renderAll() {
   renderFeatured();
   renderGrid();
   renderTrending();
   renderTicker();
   updateLiveNews();
-  updateStats();
 }
 
 function renderFeatured() {
-  var hot = news.slice(0, 3);
-  if(hot.length === 0) return;
+  var h = news.slice(0,3);
+  if(!h.length) return;
   var g = document.getElementById('featgrid');
   if(!g) return;
   
-  g.innerHTML = hot.map(function(n, i) {
-    var translateBadge = n.translated ? '<span class="translate-badge">অনূদিত</span>' : '<span class="bangla-badge">বাংলা</span>';
-    
-    if(i === 0) {
-      return `
-        <div class="fm" onclick="showFullNews(${n.id})">
-          <div class="fmbg" style="background-image:url(${n.img});min-height:270px;"></div>
-          <div class="fmov">
-            <span class="fmcat">${n.category} ${translateBadge}</span>
-            <div class="fmtitle">${esc(n.title)}</div>
-            <div class="fmmeta"><span>📰 ${esc(n.source)}</span><span>🕐 ${n.time}</span></div>
-          </div>
-        </div>
-      `;
-    } else {
-      return `
-        <div class="fsc" onclick="showFullNews(${n.id})">
-          <div class="fsi" style="background-image:url(${n.img});height:105px;"></div>
-          <div class="fsb"><div class="fscat">${n.category} ${translateBadge}</div><div class="fstitle">${esc(n.title)}</div>
-          <div style="font-size:10px;">${n.time}</div></div>
-        </div>
-      `;
-    }
-  }).join('');
+  var main = h[0], s1 = h[1]||h[0], s2 = h[2]||h[0];
+  g.innerHTML = `
+    <div class="fm" onclick="showFullNews(${main.id})">
+      <div class="fmbg" style="background-image:url(${main.img})"></div>
+      <div class="fmov">
+        <span class="fmcat">${main.cat} ${main.translated ? '<span class="translate-badge">গুগল</span>' : '<span class="bangla-badge">বাংলা</span>'}</span>
+        <div class="fmtitle">${esc(main.title)}</div>
+        <div class="fmmeta"><span>📰 ${esc(main.source)}</span><span>🕐 ${main.time}</span></div>
+      </div>
+    </div>
+    <div class="fsc" onclick="showFullNews(${s1.id})">
+      <div class="fsi" style="background-image:url(${s1.img})"></div>
+      <div class="fsb"><div class="fscat">${s1.cat}</div>
+      <div class="fstitle">${esc(s1.title)}</div>
+      <div style="font-size:9px;">${s1.time}</div></div>
+    </div>
+    <div class="fsc" onclick="showFullNews(${s2.id})">
+      <div class="fsi" style="background-image:url(${s2.img})"></div>
+      <div class="fsb"><div class="fscat">${s2.cat}</div>
+      <div class="fstitle">${esc(s2.title)}</div>
+      <div style="font-size:9px;">${s2.time}</div></div>
+    </div>
+  `;
 }
 
 function renderGrid() {
   var g = document.getElementById('newsgrid');
   if(!g) return;
-  
-  var filteredNews = currentCategory === 'all' ? news : news.filter(function(n) { return n.category === currentCategory; });
-  
-  if(filteredNews.length === 0) {
-    g.innerHTML = '<div class="empty"><p>⚠️ এই বিভাগে কোনো খবর নেই</p></div>';
+  var filtered = currentCat==='all' ? news : news.filter(n=>n.cat===currentCat);
+  if(!filtered.length) {
+    g.innerHTML = '<div class="empty"><p>❌ এই বিভাগে খবর নেই</p></div>';
     return;
   }
   
-  g.innerHTML = filteredNews.map(function(n) {
-    var translateBadge = n.translated ? '<span class="translate-badge-img">অনূদিত</span>' : '';
-    
-    return `
-      <div class="ncard">
-        <div class="ncimg" style="background-image:url(${n.img})">
-          <span class="source-badge-img">${n.source}</span>
-          <span class="image-badge">📸</span>
-          ${translateBadge}
-        </div>
-        <div class="ncbody">
-          <div class="nccat">${n.category}</div>
-          <div class="nctitle">${esc(n.title)}</div>
-          <div class="ncsum">${esc(n.summary)}</div>
-          <div class="ncfoot">
-            <div class="ncmeta">📰 ${esc(n.source)} · ${n.time}</div>
-            <div class="ca">
-              <button class="bsm bex" onclick="showFullNews(${n.id})">📖 বিস্তারিত</button>
-            </div>
-          </div>
-        </div>
+  g.innerHTML = filtered.map(n=>`
+    <div class="ncard">
+      <div class="ncimg" style="background-image:url(${n.img})">
+        <span class="source-badge-img">${n.source}</span>
+        ${n.translated ? '<span class="translate-badge-img">গুগল</span>' : '<span class="bangla-badge-img">বাংলা</span>'}
       </div>
-    `;
-  }).join('');
+      <div class="ncbody">
+        <div class="nccat">${n.cat}</div>
+        <div class="nctitle">${esc(n.title)}</div>
+      </div>
+    </div>
+  `).join('');
 }
 
 function renderTrending() {
   var l = document.getElementById('trlist');
   if(!l) return;
-  l.innerHTML = news.slice(0,5).map(function(n,i) {
-    return `<div class="tri" onclick="showFullNews(${n.id})"><div class="trn">${i+1}</div><div class="trt">${esc(n.title)}</div></div>`;
-  }).join('');
+  l.innerHTML = news.slice(0,5).map((n,i)=>`
+    <div class="tri" onclick="showFullNews(${n.id})"><div class="trn">${i+1}</div><div class="trt">${esc(n.title)}</div></div>
+  `).join('');
 }
 
 function renderTicker() {
-  var items = news.slice(0,10).map(function(n) { return '<span>'+esc(n.title)+'</span>'; }).join('');
-  var ticker = document.getElementById('tkinner');
-  if(ticker) ticker.innerHTML = items + items;
+  var items = news.slice(0,8).map(n=>'<span>'+esc(n.title)+'</span>').join('');
+  var t = document.getElementById('tkinner');
+  if(t) t.innerHTML = items+items;
 }
 
 function updateLiveNews() {
-  var liveDiv = document.getElementById('live-news');
-  if(!liveDiv) return;
-  
-  var liveItems = [];
-  var breaking = ['🔴 ব্রেকিং: নতুন খবর', '🔴 ব্রেকিং: আপডেট', '🔴 ব্রেকিং: শীর্ষ সংবাদ'];
-  liveItems.push('<span><i class="fas fa-circle" style="color:var(--ac);"></i> ' + breaking[Math.floor(Math.random()*breaking.length)] + '</span>');
-  
-  for(var i = 0; i < Math.min(7, news.length); i++) {
-    liveItems.push('<span><i class="fas fa-newspaper" style="color:var(--gd);"></i> ' + esc(news[i].title) + '</span>');
-  }
-  
-  liveDiv.innerHTML = liveItems.join('') + liveItems.join('');
+  var l = document.getElementById('live-news');
+  if(!l) return;
+  var items = ['🔴 ব্রেকিং: নতুন খবর', ...news.slice(0,5).map(n=>esc(n.title))];
+  l.innerHTML = items.map(i=>'<span><i class="fas fa-circle" style="color:var(--ac);"></i> '+i+'</span>').join('') + items.map(i=>'<span><i class="fas fa-circle" style="color:var(--ac);"></i> '+i+'</span>').join('');
 }
 
-function filterCategory(category) {
-  currentCategory = category;
-  
-  document.querySelectorAll('.ncat').forEach(function(btn) {
-    btn.classList.toggle('active', btn.getAttribute('data-cat') === category);
-  });
-  
-  var gridTitle = document.getElementById('gridttl');
-  if(gridTitle) {
-    if(category === 'all') gridTitle.innerHTML = 'সর্বশেষ খবর <span class="translate-badge">বাংলায়</span>';
-    else gridTitle.innerHTML = category + ' বিভাগ <span class="translate-badge">বাংলায়</span>';
-  }
-  
+function filterCategory(cat) {
+  currentCat = cat;
+  document.querySelectorAll('.ncat').forEach(b=>b.classList.toggle('active', b.dataset.cat===cat));
   renderGrid();
 }
 
 function showFullNews(id) {
-  var n = news.find(function(x) { return x.id === id; }) || archive.find(function(x) { return x.id === id; });
+  var n = news.find(x=>x.id===id) || archive.find(x=>x.id===id);
   if(!n) return;
+  var d = document.getElementById('full-article');
+  var e = document.getElementById('exbody');
+  var o = document.getElementById('exov');
   
-  activeNewsId = id;
-  
-  var fullDiv = document.getElementById('full-article');
-  var exbody = document.getElementById('exbody');
-  var exov = document.getElementById('exov');
-  
-  if(fullDiv) {
-    var originalText = n.translated && n.originalTitle ? '<p><small>মূল শিরোনাম: ' + esc(n.originalTitle) + '</small></p>' : '';
-    
-    fullDiv.innerHTML = `
+  if(d) {
+    d.innerHTML = `
       <div class="meta-badges">
         <span class="source-badge">📰 ${esc(n.source)}</span>
-        <span class="api-badge-modal">📡 এপিআই</span>
-        <span class="image-source-modal">📸 আসল ছবি</span>
-        ${n.translated ? '<span class="translate-modal">🔤 অনূদিত</span>' : ''}
+        ${n.translated ? '<span class="translate-modal">🔤 গুগল অনূদিত</span>' : '<span class="translate-modal">📖 বাংলা</span>'}
       </div>
-      <img src="${n.img}" alt="News Image" onerror="this.style.display='none'">
+      <img src="${n.img}" onerror="this.style.display='none'">
       <h2>${esc(n.title)}</h2>
-      ${originalText}
-      <p>${esc(n.full || n.summary)}</p>
-      <div class="fact-box"><strong>📊 সূত্র:</strong> ${n.source} থেকে সংগৃহীত</div>
-      ${n.link !== '#' ? '<p><a href="' + n.link + '" target="_blank" style="color:var(--ac);">🔗 মূল সূত্রে যান</a></p>' : ''}
+      ${n.originalTitle ? `<div class="original-title">📝 মূল: ${esc(n.originalTitle)}</div>` : ''}
+      <p>${esc(n.sum)}</p>
     `;
   }
-  
-  if(exbody) {
-    exbody.innerHTML = '<div class="dots"><span></span><span></span><span></span></div>';
-    setTimeout(function() {
-      exbody.innerHTML = '🤖 এই সংবাদটি ' + n.source + ' থেকে আনা হয়েছে। ' + (n.translated ? 'ইংরেজি থেকে বাংলায় অনুবাদ করা হয়েছে।' : '') + ' ছবিটি আসল মিডিয়া সোর্স থেকে নেওয়া।';
-    }, 800);
+  if(e) {
+    e.innerHTML = '<div class="dots"><span></span><span></span><span></span></div>';
+    setTimeout(()=>{
+      e.innerHTML = '🤖 এই সংবাদটি '+n.source+' থেকে আনা হয়েছে। '+(n.translated ? 'গুগল ট্রান্সলেট অনূদিত।' : '');
+    },500);
   }
-  
-  if(exov) exov.classList.add('open');
+  if(o) o.classList.add('open');
 }
 
-// ==================== CHAT FUNCTIONS ====================
-async function sendMainChat() {
-  if(chatBusy) return;
-  var inp = document.getElementById('chatin');
-  if(!inp || !inp.value.trim()) return;
-  
-  var q = inp.value.trim();
-  inp.value = '';
-  addMainChatMsg('u', q);
-  chatBusy = true;
-  document.getElementById('main-chat-send').disabled = true;
-  
-  var aiMsg = addMainChatMsg('a', '<div class="dots"><span></span><span></span><span></span></div>');
-  
-  // Simple AI response
-  setTimeout(function() {
-    var response = '🤖 আপনার প্রশ্ন: "' + q + '"\n\n১০টি বাংলাদেশি মিডিয়া থেকে সংবাদ সংগ্রহ করা হচ্ছে। সব খবর বাংলায় দেখানো হয়।';
-    if(aiMsg) aiMsg.innerHTML = '<div class="ailbl">🤖 NewsAI</div>' + response;
-    chatBusy = false;
-    document.getElementById('main-chat-send').disabled = false;
-  }, 1000);
-}
-
-function addMainChatMsg(role, html) {
-  var msgs = document.getElementById('chatmsgs');
-  if(!msgs) return;
-  var d = document.createElement('div');
-  d.className = role === 'u' ? 'msgu' : 'msga';
-  d.innerHTML = role === 'u' ? html : html;
-  msgs.appendChild(d);
-  msgs.scrollTop = msgs.scrollHeight;
-  return d;
-}
-
-// ==================== UTILITIES ====================
-function setAiStatus(type, msg) {
-  var dot = document.getElementById('aisdot');
-  var txt = document.getElementById('ai-status-text');
-  var sbdot = document.getElementById('sbdot');
-  var sbstatus = document.getElementById('sbstatus');
-  if(dot) dot.className = 'ai-status-dot' + (type === 'loading' ? ' loading' : type === 'error' ? ' error' : '');
-  if(sbdot) sbdot.className = 'stdot' + (type === 'loading' ? ' busy' : '');
-  if(txt) txt.textContent = msg;
-  if(sbstatus) sbstatus.textContent = msg;
+function setAiStatus(t,m) {
+  var d = document.getElementById('aisdot');
+  var tx = document.getElementById('ai-status-text');
+  var sd = document.getElementById('sbdot');
+  var st = document.getElementById('sbstatus');
+  if(d) d.className = 'ai-status-dot' + (t==='loading'?' loading':t==='error'?' error':'');
+  if(sd) sd.className = 'stdot' + (t==='loading'?' busy':'');
+  if(tx) tx.textContent = m;
+  if(st) st.textContent = m;
 }
 
 function setLastUpd() {
-  var now = new Date();
-  var el = document.getElementById('lastupd');
-  if(el) el.textContent = 'শেষ আপডেট: ' + now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+  var n = new Date();
+  var e = document.getElementById('lastupd');
+  if(e) e.textContent = n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');
 }
 
-function startCountdown(seconds) {
+function startCountdown(s) {
   if(cdTimer) clearInterval(cdTimer);
-  countdown = seconds;
+  countdown = s;
   updateCd();
-  cdTimer = setInterval(function() {
+  cdTimer = setInterval(()=>{
     countdown--;
-    if(countdown <= 0) { countdown = 1800; fetchFreshNews(); }
+    if(countdown<=0) { countdown=1800; fetchFreshNews(); }
     updateCd();
-  }, 1000);
+  },1000);
 }
 
 function updateCd() {
-  var m = Math.floor(countdown / 60);
-  var s = countdown % 60;
-  var cdNum = document.getElementById('cdnum');
-  var pbFill = document.getElementById('pbfill');
-  if(cdNum) cdNum.textContent = m.toString().padStart(2,'0') + ':' + s.toString().padStart(2,'0');
-  if(pbFill) pbFill.style.width = ((countdown / 1800) * 100) + '%';
+  var m = Math.floor(countdown/60);
+  var s = countdown%60;
+  var cd = document.getElementById('cdnum');
+  var pb = document.getElementById('pbfill');
+  if(cd) cd.textContent = m.toString().padStart(2,'0')+':'+s.toString().padStart(2,'0');
+  if(pb) pb.style.width = (countdown/1800*100)+'%';
 }
 
 function showToast(m) {
@@ -1127,382 +1748,222 @@ function showToast(m) {
   if(!t) return;
   t.textContent = m;
   t.classList.add('show');
-  _toastTm = setTimeout(function() { t.classList.remove('show'); }, 2800);
+  _toastTm = setTimeout(()=>t.classList.remove('show'), 2000);
 }
 
 function closeModal(id) {
-  var el = document.getElementById(id);
-  if(el) el.classList.remove('open');
+  var e = document.getElementById(id);
+  if(e) e.classList.remove('open');
 }
 
 function toggleChat() {
-  chatIsOpen = !chatIsOpen;
-  var panel = document.getElementById('chatpanel');
-  if(panel) panel.style.display = chatIsOpen ? 'flex' : 'none';
+  chatOpen = !chatOpen;
+  var p = document.getElementById('chatpanel');
+  if(p) p.style.display = chatOpen ? 'flex' : 'none';
 }
 
-function closeChat() { toggleChat(); }
+function closeChat() { chatOpen=false; document.getElementById('chatpanel').style.display='none'; }
 
 function toggleDark() {
   var h = document.documentElement;
-  var dark = h.getAttribute('data-theme') === 'dark';
-  h.setAttribute('data-theme', dark ? 'light' : 'dark');
-  showToast(dark ? '☀️ লাইট মোড' : '🌙 ডার্ক মোড');
+  h.setAttribute('data-theme', h.getAttribute('data-theme')==='dark'?'light':'dark');
+  showToast('মোড পরিবর্তিত');
 }
 
 function showHome() {
-  document.getElementById('feat').style.display = 'block';
-  document.getElementById('newssec').style.display = 'block';
-  document.getElementById('arcsec').style.display = 'none';
-  document.getElementById('srchbox').style.display = 'none';
-  document.getElementById('srchin').value = '';
+  document.getElementById('feat').style.display='block';
+  document.getElementById('newssec').style.display='block';
+  document.getElementById('arcsec').style.display='none';
+  document.getElementById('srchbox').style.display='none';
+  document.getElementById('srchin').value='';
   filterCategory('all');
 }
 
 function showArchive() {
-  document.getElementById('feat').style.display = 'none';
-  document.getElementById('newssec').style.display = 'none';
-  document.getElementById('arcsec').style.display = 'block';
-  document.getElementById('srchbox').style.display = 'none';
+  document.getElementById('feat').style.display='none';
+  document.getElementById('newssec').style.display='none';
+  document.getElementById('arcsec').style.display='block';
+  document.getElementById('srchbox').style.display='none';
   
-  var arclist = document.getElementById('arclist');
-  if(arclist) {
-    arclist.innerHTML = archive.length ? archive.map(function(a) {
-      return '<div class="arcitem" onclick="showFullNews(' + a.id + ')">' +
-        '<div class="arcimg" style="background-image:url(' + a.img + ')"></div>' +
-        '<div class="arcbody"><div class="arccat">' + a.category + '</div>' +
-        '<div class="arctitle">' + esc(a.title) + '</div>' +
-        '<div class="arcmeta">📰 ' + esc(a.source) + ' · ' + a.time + '</div></div></div>';
-    }).join('') : '<div class="empty"><p>আর্কাইভ খালি</p></div>';
+  var al = document.getElementById('arclist');
+  if(al) {
+    al.innerHTML = archive.length ? archive.map(a=>`
+      <div class="arcitem" onclick="showFullNews(${a.id})">
+        <div class="arcimg" style="background-image:url(${a.img})"></div>
+        <div class="arcbody"><div class="arccat">${a.cat}</div>
+        <div class="arctitle">${esc(a.title)}</div>
+        <div class="arcmeta">📰 ${esc(a.source)} · ${a.time}</div></div>
+      </div>
+    `).join('') : '<div class="empty"><p>আর্কাইভ খালি</p></div>';
   }
-  
-  document.querySelectorAll('.ncat').forEach(function(b) {
-    b.classList.toggle('active', b.getAttribute('data-cat') === '__arc');
-  });
+  document.querySelectorAll('.ncat').forEach(b=>b.classList.toggle('active', b.dataset.cat==='__arc'));
 }
 
 function handleSearch(v) {
   clearTimeout(srchTm);
   v = v.trim();
-  if(!v) { document.getElementById('srchbox').style.display = 'none'; return; }
-  
-  srchTm = setTimeout(function() {
+  if(!v) { document.getElementById('srchbox').style.display='none'; return; }
+  srchTm = setTimeout(()=>{
     var all = news.concat(archive);
-    var res = all.filter(function(n) { return n.title.indexOf(v) !== -1 || (n.summary && n.summary.indexOf(v) !== -1); });
-    
-    document.getElementById('srchbox').style.display = 'block';
-    var srchres = document.getElementById('srchres');
-    if(srchres) {
-      srchres.innerHTML = res.length ? res.map(function(r) {
-        return '<div class="arcitem" onclick="showFullNews(' + r.id + ')">' +
-          '<div class="arcbody"><div class="arccat">' + r.category + '</div>' +
-          '<div class="arctitle">' + esc(r.title) + '</div></div></div>';
-      }).join('') : '<p style="padding:10px">কিছু পাওয়া যায়নি</p>';
+    var res = all.filter(n=>n.title.indexOf(v)!==-1||(n.sum&&n.sum.indexOf(v)!==-1));
+    document.getElementById('srchbox').style.display='block';
+    var sr = document.getElementById('srchres');
+    if(sr) {
+      sr.innerHTML = res.length ? res.map(r=>`
+        <div class="arcitem" onclick="showFullNews(${r.id})">
+          <div class="arcbody"><div class="arccat">${r.cat}</div>
+          <div class="arctitle">${esc(r.title)}</div></div>
+        </div>
+      `).join('') : '<p style="padding:8px">কিছু পাওয়া যায়নি</p>';
     }
-  }, 300);
+  },300);
 }
 
-// ==================== INIT ====================
-document.addEventListener('DOMContentLoaded', async function() {
-  showToast('🚀 সিস্টেম চালু হচ্ছে...');
-  
-  var stored = safeJSON(K.NEWS, null);
-  if(stored && stored.length) {
-    news = stored;
-    showToast('📰 সংবাদ লোড হয়েছে');
-  } else {
-    await fetchFreshNews();
-  }
-  
-  renderAll();
-  setLastUpd();
-  startCountdown(1800);
-  startLiveNews();
-  renderAds();
-  updateStats();
-  setAiStatus('ready', '✅ ১০টি বাংলাদেশি এপিআই + অনুবাদ সক্রিয়');
-});
-
-function startLiveNews() {
-  if(liveNewsInterval) clearInterval(liveNewsInterval);
-  updateLiveNews();
-  liveNewsInterval = setInterval(updateLiveNews, 30000);
+function sendMainChat() {
+  if(chatBusy) return;
+  var i = document.getElementById('chatin');
+  if(!i||!i.value.trim()) return;
+  var q = i.value;
+  i.value = '';
+  addMsg('u', q);
+  chatBusy = true;
+  var am = addMsg('a', '<div class="dots"><span></span><span></span><span></span></div>');
+  setTimeout(()=>{
+    if(am) am.innerHTML = '<div class="ailbl">🤖 NewsAI</div>গুগল ট্রান্সলেট ব্যবহার করে সব সংবাদ বাংলায়।';
+    chatBusy = false;
+  },800);
 }
 
-function updateStats() {
-  var stN = document.getElementById('st-n');
-  var stA = document.getElementById('st-a');
-  var stAd = document.getElementById('st-ad');
-  var stClick = document.getElementById('st-click');
-  
-  if(stN) stN.textContent = news.length;
-  if(stA) stA.textContent = archive.length;
-  if(stAd) stAd.textContent = ads.length;
-  
-  var totalClicks = ads.reduce(function(sum, ad) { return sum + (ad.clicks || 0); }, 0);
-  if(stClick) stClick.textContent = totalClicks;
+function addMsg(r, h) {
+  var m = document.getElementById('chatmsgs');
+  if(!m) return;
+  var d = document.createElement('div');
+  d.className = r==='u' ? 'msgu' : 'msga';
+  d.innerHTML = r==='u' ? h : h;
+  m.appendChild(d);
+  m.scrollTop = m.scrollHeight;
+  return d;
 }
 
-// ==================== AD FUNCTIONS ====================
-function renderAds() {
-  var positions = ['top', 'mid', 'bottom', 'side', 'popup'];
-  var now = new Date();
-  
-  positions.forEach(function(pos) {
-    var activeAds = ads.filter(function(ad) { 
-      return ad.pos === pos && 
-        (!ad.start || new Date(ad.start) <= now) && 
-        (!ad.end || new Date(ad.end) >= now);
-    });
-    
-    var el = document.getElementById('ad' + pos);
-    var contentEl = document.getElementById('ad' + pos + '-content');
-    var counterEl = document.getElementById('ad' + pos + '-counter');
-    
-    if(activeAds.length > 0 && el && contentEl) {
-      var ad = activeAds[0];
-      ad.views = (ad.views || 0) + 1;
-      
-      var imgHtml = ad.image ? '<img src="' + ad.image + '" alt="Ad">' : '';
-      contentEl.innerHTML = imgHtml + '<div class="adinn"><span>📢</span><span>' + esc(ad.title) + (ad.desc ? '<br><small>' + esc(ad.desc) + '</small>' : '') + '</span></div>';
-      
-      el.setAttribute('data-link', ad.link || '');
-      el.setAttribute('data-id', ad.id || '');
-      el.style.display = 'block';
-      
-      if(counterEl && activeAds.length > 1) {
-        counterEl.textContent = '1/' + activeAds.length;
-      }
-    } else if(el) {
-      el.style.display = 'none';
-    }
-  });
-  
-  saveJSON(K.ADS, ads);
-}
-
-function renderAdList() {
-  var l = document.getElementById('adlist');
-  if(!l) return;
-  
-  if(!ads.length) {
-    l.innerHTML = '<div style="text-align:center;padding:20px;">কোনো বিজ্ঞাপন নেই</div>';
-    return;
-  }
-  
-  l.innerHTML = ads.map(function(ad, i) {
-    return '<div class="adli">' +
-      '<div class="adliinfo">' +
-        '<div class="adlititle">' + esc(ad.title) + '</div>' +
-        '<div class="adlimeta">📍 ' + posLbl(ad.pos) + ' | 👁 ' + (ad.views || 0) + ' | 🖱 ' + (ad.clicks || 0) + '</div>' +
-      '</div>' +
-      '<div class="adbtns">' +
-        '<button class="btne" onclick="editAd(' + i + ')">✏️</button>' +
-        '<button class="btnd" onclick="delAd(' + i + ')">🗑</button>' +
-      '</div></div>';
-  }).join('');
-}
-
-function posLbl(p) {
-  return p === 'top' ? 'উপরে' : p === 'mid' ? 'মাঝে' : p === 'bottom' ? 'নিচে' : p === 'side' ? 'পাশে' : 'পপআপ';
-}
-
-function saveAd() {
-  var title = document.getElementById('ad-title');
-  if(!title || !title.value.trim()) {
-    showToast('❌ শিরোনাম দিন');
-    return;
-  }
-  
-  var newAd = {
-    id: Date.now(),
-    title: title.value.trim(),
-    desc: document.getElementById('ad-desc')?.value.trim() || '',
-    link: document.getElementById('ad-link')?.value.trim() || '',
-    image: document.getElementById('ad-image')?.value.trim() || '',
-    pos: document.getElementById('ad-position')?.value || 'top',
-    start: document.getElementById('ad-start')?.value || '',
-    end: document.getElementById('ad-end')?.value || '',
-    views: 0,
-    clicks: 0,
-    createdAt: Date.now()
-  };
-  
-  ads.push(newAd);
-  saveJSON(K.ADS, ads);
-  renderAds();
-  renderAdList();
-  updateStats();
-  showToast('✅ বিজ্ঞাপন সংরক্ষিত');
-  
-  title.value = '';
-  document.getElementById('ad-desc').value = '';
-  document.getElementById('ad-link').value = '';
-  document.getElementById('ad-image').value = '';
-  document.getElementById('ad-start').value = '';
-  document.getElementById('ad-end').value = '';
-  
-  switchTab('ads');
-}
-
-function editAd(i) {
-  var a = ads[i];
-  document.getElementById('ad-title').value = a.title || '';
-  document.getElementById('ad-desc').value = a.desc || '';
-  document.getElementById('ad-link').value = a.link || '';
-  document.getElementById('ad-image').value = a.image || '';
-  document.getElementById('ad-position').value = a.pos || 'top';
-  document.getElementById('ad-start').value = a.start || '';
-  document.getElementById('ad-end').value = a.end || '';
-  
-  ads.splice(i, 1);
-  saveJSON(K.ADS, ads);
-  switchTab('newad');
-}
-
-function delAd(i) {
-  if(confirm('মুছবেন?')) {
-    ads.splice(i, 1);
-    saveJSON(K.ADS, ads);
-    renderAds();
-    renderAdList();
-    updateStats();
-    showToast('🗑 মুছে ফেলা হয়েছে');
-  }
-}
-
-function adClick(pos) {
-  var el = document.getElementById('ad' + pos);
-  if(!el) return;
-  
-  var link = el.getAttribute('data-link');
-  var adId = el.getAttribute('data-id');
-  
-  if(adId) {
-    var ad = ads.find(function(a) { return a.id == adId; });
-    if(ad) {
-      ad.clicks = (ad.clicks || 0) + 1;
-      saveJSON(K.ADS, ads);
-    }
-  }
-  
-  if(link) {
-    window.open(link, '_blank');
-  } else {
-    showToast('📢 বিজ্ঞাপন');
-  }
-}
-
-function closeAd(pos) {
-  var el = document.getElementById('ad' + pos);
-  if(el) el.style.display = 'none';
-}
-
-// ==================== ADMIN FUNCTIONS ====================
 function openAdmin() {
   document.getElementById('admov').classList.add('open');
-  
   if(isAdmin) {
-    showAdmDash();
+    document.getElementById('admlogin').style.display='none';
+    document.getElementById('admdash').style.display='block';
   } else if(!adminPwHash) {
     document.getElementById('admlogin').innerHTML = `
-      <div class="pwsetup">
-        <h3>🔐 সেটআপ</h3>
-        <p>নতুন পাসওয়ার্ড দিন</p>
-        <div class="fc"><label>পাসওয়ার্ড (৬ অক্ষর)</label><input type="password" class="fi" id="admpw"></div>
-        <div class="fc"><label>নিশ্চিত করুন</label><input type="password" class="fi" id="admpw2"></div>
-        <button class="btnp" onclick="doAdminLogin()">✅ সেট করুন</button>
-        <div class="lock-err" id="admerr"></div>
-      </div>`;
-    document.getElementById('admlogin').style.display = 'block';
-    document.getElementById('admdash').style.display = 'none';
+      <div class="pwsetup"><h3>🔐 সেটআপ</h3>
+      <div class="fc"><label>পাসওয়ার্ড (৬ অক্ষর)</label><input type="password" class="fi" id="admpw"></div>
+      <div class="fc"><label>নিশ্চিত করুন</label><input type="password" class="fi" id="admpw2"></div>
+      <button class="btnp" onclick="doAdminLogin()">✅ সেট করুন</button>
+      <div class="lock-err" id="admerr"></div></div>`;
+    document.getElementById('admlogin').style.display='block';
+    document.getElementById('admdash').style.display='none';
   } else {
     document.getElementById('admlogin').innerHTML = `
-      <div class="pwsetup">
-        <h3>🔐 লগইন</h3>
-        <p>অ্যাডমিন লগইন</p>
-        <div class="fc"><label>পাসওয়ার্ড</label><input type="password" class="fi" id="admpw"></div>
-        <button class="btnp" onclick="doAdminLogin()">🔓 লগইন</button>
-        <div class="lock-err" id="admerr"></div>
-      </div>`;
-    document.getElementById('admlogin').style.display = 'block';
-    document.getElementById('admdash').style.display = 'none';
+      <div class="pwsetup"><h3>🔐 লগইন</h3>
+      <div class="fc"><label>পাসওয়ার্ড</label><input type="password" class="fi" id="admpw"></div>
+      <button class="btnp" onclick="doAdminLogin()">🔓 লগইন</button>
+      <div class="lock-err" id="admerr"></div></div>`;
+    document.getElementById('admlogin').style.display='block';
+    document.getElementById('admdash').style.display='none';
   }
 }
 
 function doAdminLogin() {
-  var pw = document.getElementById('admpw');
-  if(!pw) return;
-  var err = document.getElementById('admerr');
+  var p = document.getElementById('admpw');
+  if(!p) return;
+  var e = document.getElementById('admerr');
   
   if(!adminPwHash) {
-    var pw2 = document.getElementById('admpw2');
-    if(!pw2) return;
-    if(pw.value.length < 6) { err.textContent = '❌ ৬ অক্ষর দিন'; return; }
-    if(pw.value !== pw2.value) { err.textContent = '❌ মিলছে না'; return; }
-    adminPwHash = hashStr(pw.value);
+    var p2 = document.getElementById('admpw2');
+    if(!p2) return;
+    if(p.value.length<6) { e.textContent='❌ ৬ অক্ষর দিন'; return; }
+    if(p.value!==p2.value) { e.textContent='❌ মিলছে না'; return; }
+    adminPwHash = hashStr(p.value);
     localStorage.setItem(K.PW, adminPwHash);
     isAdmin = true;
-    sessionStorage.setItem(K.SESS, '1');
-    showAdmDash();
+    sessionStorage.setItem(K.SESS,'1');
+    document.getElementById('admlogin').style.display='none';
+    document.getElementById('admdash').style.display='block';
     showToast('✅ পাসওয়ার্ড সেট');
     return;
   }
   
-  if(hashStr(pw.value) === adminPwHash) {
+  if(hashStr(p.value)===adminPwHash) {
     isAdmin = true;
-    sessionStorage.setItem(K.SESS, '1');
-    showAdmDash();
+    sessionStorage.setItem(K.SESS,'1');
+    document.getElementById('admlogin').style.display='none';
+    document.getElementById('admdash').style.display='block';
     showToast('✅ লগইন সফল');
   } else {
-    err.textContent = '❌ ভুল পাসওয়ার্ড';
+    e.textContent='❌ ভুল';
   }
-}
-
-function showAdmDash() {
-  document.getElementById('admlogin').style.display = 'none';
-  document.getElementById('admdash').style.display = 'block';
-  renderAdList();
-  updateStats();
 }
 
 function adminLogout() {
   isAdmin = false;
   sessionStorage.removeItem(K.SESS);
-  document.getElementById('admdash').style.display = 'none';
-  document.getElementById('admlogin').style.display = 'block';
+  document.getElementById('admdash').style.display='none';
+  document.getElementById('admlogin').style.display='block';
   closeModal('admov');
   showToast('👋 লগআউট');
 }
 
-function switchTab(tab) {
-  var tabs = ['stats', 'ads', 'newad', 'settings'];
-  document.querySelectorAll('.admtab').forEach(function(b,i) {
-    b.classList.toggle('active', tabs[i] === tab);
-  });
-  document.querySelectorAll('.admsec').forEach(function(s) {
-    s.classList.remove('active');
-  });
-  var el = document.getElementById('sec-' + tab);
-  if(el) el.classList.add('active');
-  if(tab === 'stats') updateStats();
-}
-
 function changePassword() {
-  var newPw = document.getElementById('new-pw');
-  var confirmPw = document.getElementById('confirm-pw');
-  var msg = document.getElementById('pw-message');
-  if(!newPw || !confirmPw || !msg) return;
-  if(newPw.value.length < 6) { msg.textContent = '❌ পাসওয়ার্ড কমপক্ষে ৬ অক্ষর হতে হবে'; return; }
-  if(newPw.value !== confirmPw.value) { msg.textContent = '❌ পাসওয়ার্ড মিলছে না'; return; }
-  adminPwHash = hashStr(newPw.value);
+  var n = document.getElementById('new-pw');
+  var c = document.getElementById('confirm-pw');
+  var m = document.getElementById('pw-message');
+  if(!n||!c||!m) return;
+  if(n.value.length<6) { m.textContent='❌ ৬ অক্ষর'; return; }
+  if(n.value!==c.value) { m.textContent='❌ মিলছে না'; return; }
+  adminPwHash = hashStr(n.value);
   localStorage.setItem(K.PW, adminPwHash);
-  msg.textContent = '✅ পাসওয়ার্ড পরিবর্তন হয়েছে';
-  newPw.value = ''; confirmPw.value = '';
-  showToast('✅ পাসওয়ার্ড পরিবর্তিত হয়েছে');
+  m.textContent='✅ পরিবর্তিত';
+  n.value=''; c.value='';
+  showToast('✅ পাসওয়ার্ড পরিবর্তিত');
 }
 
-// ==================== EXPORT GLOBALS ====================
+function renderAds() {
+  ['top','mid','bottom','side','popup'].forEach(p=>{
+    var el = document.getElementById('ad'+p);
+    var ct = document.getElementById('ad'+p+'-content');
+    if(el&&ct) {
+      var a = ads.find(ad=>ad.pos===p);
+      if(a) {
+        ct.innerHTML = '<div class="adinn"><span>📢</span><span>'+esc(a.title)+(a.desc?'<br><small>'+esc(a.desc)+'</small>':'')+'</span></div>';
+        el.setAttribute('data-link',a.link||'');
+        el.style.display='block';
+      } else el.style.display='none';
+    }
+  });
+}
+
+function adClick(p) {
+  var el = document.getElementById('ad'+p);
+  if(!el) return;
+  var l = el.getAttribute('data-link');
+  if(l) window.open(l,'_blank');
+  else showToast('📢 বিজ্ঞাপন');
+}
+
+function closeAd(p) {
+  var el = document.getElementById('ad'+p);
+  if(el) el.style.display='none';
+}
+
+document.addEventListener('DOMContentLoaded', async ()=>{
+  showToast('🚀 চালু হচ্ছে...');
+  var s = safeJSON(K.NEWS, null);
+  if(s&&s.length) { news=s; showToast('📰 সংবাদ লোড'); }
+  else await fetchFreshNews();
+  renderAll();
+  setLastUpd();
+  startCountdown(1800);
+  renderAds();
+  setAiStatus('ready','✅ গুগল ট্রান্সলেট সক্রিয়');
+});
+
 window.showHome = showHome;
 window.filterCategory = filterCategory;
 window.showArchive = showArchive;
@@ -1518,10 +1979,6 @@ window.toggleChat = toggleChat;
 window.closeChat = closeChat;
 window.sendMainChat = sendMainChat;
 window.changePassword = changePassword;
-window.switchTab = switchTab;
-window.saveAd = saveAd;
-window.editAd = editAd;
-window.delAd = delAd;
 window.adClick = adClick;
 window.closeAd = closeAd;
 </script>
